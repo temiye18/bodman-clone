@@ -1,6 +1,6 @@
 # Boadman — Brand Identity & Design System
 
-> **Status:** v3 · Updated 2026-08-13 · Reflects the immersive rebuild in `index.html`.
+> **Status:** v4 · Updated 2026-08-13 · Immersive rebuild + impeccable animate/delight/polish passes.
 > This document now describes what was built, not just what was proposed. Tokens, type, motion,
 > and sound below match the code. Companion files: `PRODUCT.md` (positioning), `IMAGES_PROMPT.md`
 > (art brief), `boadman-logo.svg` (logo), `favicon.svg`.
@@ -144,9 +144,23 @@ the same bank-meets-arena reading (ledger rows of coins/entrants + live countdow
 - **Reveals:** per-section fade/slide + staggered children; **scramble** on section titles;
   **count-up** on the four stats; **magnetic** primary/ember buttons; **reticle** cursor; **ember
   canvas** + animated status waveform; **live countdowns** every second.
+- **State-conveying motion** (impeccable `animate` pass): press feedback on every button
+  (`:active` brightness), a **scroll-spy** that lights the current section's nav link, and an
+  animated **sequence connector** (pulsing chevrons) between the how-it-works steps to make the
+  01→02→03→04 flow legible.
 - Every effect has a `prefers-reduced-motion` path: no Lenis, boot hidden instantly, no
   scramble/parallax/particles/marquee, content shown in place. Reveals use `gsap.from` so content
   is visible if JS or the CDN fails.
+
+### 7b. Delight (earned, gaming-register appropriate)
+- **Konami code** (↑↑↓↓←→←→ B A) triggers **Overdrive**: the ember field surges, the vignette
+  flares coral, a HUD toast reads "⚡ Overdrive engaged", and a fanfare plays if sound is on.
+  Auto-reverts after 6s. A discovery reward, not a blocker.
+- **Sound-enable power-up:** enabling sound plays a rising power-up cue and shows a one-time toast.
+- **Coin burst:** clicking "Join Boadman" scatters spinning `◈` coin particles (the only place it
+  fires, so it stays special). Skipped under reduced motion.
+- **Logo ember-flicker** on hover; **custom reticle cursor**; a **styled dev-console greeting**
+  (brand voice, hints at the Konami code).
 
 ---
 
@@ -177,6 +191,9 @@ No casino/gambling imagery.
 - Semantic landmarks, single `<h1>`, `aria-expanded` on FAQ, alt text on all images, reticle is
   decorative (`aria-hidden`, additive to the native cursor rather than replacing it).
 - External scripts (GSAP, ScrollTrigger, Lenis) pinned with SRI (`integrity` + `crossorigin`).
+- **Polish pass:** a keyboard **skip-to-content** link, press/hover/focus states on every control,
+  legibility text-shadows over the hero photo, `loading="lazy"` + `decoding="async"` on all
+  below-fold images (protects LCP/CLS), and a single console-greeting (no stray debug logs).
 
 ---
 

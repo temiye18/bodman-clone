@@ -348,6 +348,44 @@ html.js .boot{display:flex}
 .foot__bar span{font-family:var(--f-hud);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
 .foot__bar .v{color:var(--muted)}
 
+/* =========================================================== ANIMATE / DELIGHT / POLISH */
+/* skip link (a11y) */
+.skip{position:fixed;left:.6rem;top:.6rem;z-index:var(--z-boot);transform:translateY(-180%);background:var(--coral);color:#fff;
+  font-family:var(--f-hud);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.65rem .95rem;
+  border-radius:var(--r-b) 10px var(--r-b) 10px;transition:transform .22s var(--ease)}
+.skip:focus{transform:translateY(0)}
+/* press feedback */
+.btn:active{filter:brightness(.9)}
+.snd:active,.tourn__nav button:active,.acc__q:active{filter:brightness(.88)}
+/* scroll-spy active nav link */
+.nav__links a.active{color:var(--bone)}
+.nav__links a.active::after{transform:scaleX(1)}
+/* legibility over hero photo */
+.trust li{text-shadow:0 1px 12px rgba(0,0,0,.7)}
+/* logo ember flicker on hover */
+.brand img{transition:filter .3s}
+.brand:hover img{filter:drop-shadow(0 0 10px rgba(255,61,31,.55));animation:flick .5s}
+@keyframes flick{0%,100%{opacity:1}22%{opacity:.68}44%{opacity:1}66%{opacity:.85}}
+/* how-it-works sequence connector (desktop) */
+@media(min-width:861px){
+  .step:not(:last-child)::after{content:"";position:absolute;top:3.05rem;right:-9px;width:15px;height:15px;z-index:3;
+    border-top:1.5px solid var(--coral);border-right:1.5px solid var(--coral);transform:rotate(45deg);background:var(--panel);animation:seq 2.4s infinite}
+  .step:nth-child(2)::after{animation-delay:.25s}.step:nth-child(3)::after{animation-delay:.5s}
+}
+@keyframes seq{0%,100%{opacity:.22}50%{opacity:.95}}
+/* HUD toast */
+.toast{position:fixed;left:50%;bottom:2rem;z-index:var(--z-boot);transform:translate(-50%,20px);opacity:0;pointer-events:none;
+  display:flex;align-items:center;gap:.6rem;background:var(--glass);border:1px solid var(--coral);backdrop-filter:blur(10px);color:var(--bone);
+  font-family:var(--f-hud);font-size:.76rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.7rem 1.1rem;
+  border-radius:var(--r-b) 12px var(--r-b) 12px;box-shadow:0 14px 44px -10px rgba(255,61,31,.6)}
+.toast .d{width:7px;height:7px;border-radius:50%;background:var(--coral);box-shadow:0 0 10px var(--coral)}
+.toast.show{opacity:1;transform:translate(-50%,0);transition:opacity .35s,transform .45s var(--ease)}
+/* overdrive easter egg */
+body.overdrive .fx-vig{box-shadow:inset 0 0 260px 60px rgba(170,22,0,.55);transition:box-shadow .5s}
+body.overdrive .fx-scan{opacity:.55}
+/* coin-burst particle */
+.coin-fx{position:fixed;z-index:var(--z-cursor);pointer-events:none;font-family:var(--f-hud);font-weight:700;color:var(--coral);text-shadow:0 0 10px rgba(255,61,31,.85);will-change:transform,opacity}
+
 /* =========================================================== RESPONSIVE */
 @media(max-width:1024px){
   .why__grid{grid-template-columns:repeat(2,1fr)}
@@ -388,6 +426,7 @@ html.js .boot{display:flex}
 </head>
 <body>
 
+<a class="skip" href="#top">Skip to content</a>
 <div class="prog" id="prog" aria-hidden="true"></div>
 <div class="fx-grid" aria-hidden="true"></div>
 <canvas class="fx-embers" id="embers" aria-hidden="true"></canvas>
@@ -518,7 +557,7 @@ html.js .boot{display:flex}
       <article class="card" data-cursor>
         <div class="card__media"><span class="card__chip chip--live">● Live</span><span class="card__type">Racing // Player host</span>
           <div class="m-ph"><code>images/tournament-racing.png</code></div>
-          <img class="m-img" data-par-card src="images/tournament-racing.png" alt="Neon-lit racing car mid-drift on a wet night circuit" onerror="this.remove()" /></div>
+          <img class="m-img" data-par-card loading="lazy" decoding="async" src="images/tournament-racing.png" alt="Neon-lit racing car mid-drift on a wet night circuit" onerror="this.remove()" /></div>
         <div class="card__body"><h3>Friday Night Sprint Cup</h3>
           <div class="card__rows"><div class="row"><span class="k">Prize pool</span><span class="v hot">12,400 coins</span></div><div class="row"><span class="k">Entry fee</span><span class="v">250 coins</span></div><div class="row"><span class="k">Entrants</span><span class="v">74 / 128</span></div></div>
           <div class="card__foot"><span class="card__timer">Ends<b data-countdown="02:18:44">02:18:44</b></span><a class="btn btn--primary btn--sm" href="#" data-sfx="click">Join<span class="btn__ar" aria-hidden="true">→</span></a></div></div>
@@ -526,7 +565,7 @@ html.js .boot{display:flex}
       <article class="card" data-cursor>
         <div class="card__media"><span class="card__chip chip--open">Open</span><span class="card__type">Shooter // 1v1</span>
           <div class="m-ph"><code>images/tournament-shooter.png</code></div>
-          <img class="m-img" data-par-card src="images/tournament-shooter.png" alt="Armored marksman taking aim in a smoke-filled ruin" onerror="this.remove()" /></div>
+          <img class="m-img" data-par-card loading="lazy" decoding="async" src="images/tournament-shooter.png" alt="Armored marksman taking aim in a smoke-filled ruin" onerror="this.remove()" /></div>
         <div class="card__body"><h3>No-Scope Showdown</h3>
           <div class="card__rows"><div class="row"><span class="k">Prize pool</span><span class="v hot">8,000 coins</span></div><div class="row"><span class="k">Entry fee</span><span class="v">100 coins</span></div><div class="row"><span class="k">Entrants</span><span class="v">32 / 64</span></div></div>
           <div class="card__foot"><span class="card__timer">Starts<b data-countdown="04:37:12">04:37:12</b></span><a class="btn btn--ghost btn--sm" href="#" data-sfx="click">Enter<span class="btn__ar" aria-hidden="true">→</span></a></div></div>
@@ -534,7 +573,7 @@ html.js .boot{display:flex}
       <article class="card" data-cursor>
         <div class="card__media"><span class="card__chip chip--soon">Starting soon</span><span class="card__type">Fighting // 1v1</span>
           <div class="m-ph"><code>images/tournament-fighting.png</code></div>
-          <img class="m-img" data-par-card src="images/tournament-fighting.png" alt="Two fighters clashing in a fire-lit combat arena" onerror="this.remove()" /></div>
+          <img class="m-img" data-par-card loading="lazy" decoding="async" src="images/tournament-fighting.png" alt="Two fighters clashing in a fire-lit combat arena" onerror="this.remove()" /></div>
         <div class="card__body"><h3>Arena Championship</h3>
           <div class="card__rows"><div class="row"><span class="k">Prize pool</span><span class="v hot">15,000 coins</span></div><div class="row"><span class="k">Entry fee</span><span class="v">300 coins</span></div><div class="row"><span class="k">Entrants</span><span class="v">18 / 32</span></div></div>
           <div class="card__foot"><span class="card__timer">Starts<b data-countdown="06:50:21">06:50:21</b></span><a class="btn btn--ghost btn--sm" href="#" data-sfx="click">Enter<span class="btn__ar" aria-hidden="true">→</span></a></div></div>
@@ -545,7 +584,7 @@ html.js .boot{display:flex}
 
   <!-- CINEMATIC BAND -->
   <section class="band" aria-label="Skill, stake, status">
-    <div class="band__bg" id="bandBg" aria-hidden="true"><div class="band__ph"></div><img src="images/arena-wide.png" alt="" onerror="this.remove()" /></div>
+    <div class="band__bg" id="bandBg" aria-hidden="true"><div class="band__ph"></div><img loading="lazy" decoding="async" src="images/arena-wide.png" alt="" onerror="this.remove()" /></div>
     <div class="band__scrim" aria-hidden="true"></div>
     <div class="wrap band__in">
       <h2 data-band><span class="w1">SKILL</span><span class="sep">//</span><span class="w2">STAKE</span><span class="sep">//</span><span class="w3">STATUS</span></h2>
@@ -561,7 +600,7 @@ html.js .boot{display:flex}
 
   <!-- WHY -->
   <section class="sec wrap" id="why">
-    <div class="wash" aria-hidden="true"><img data-par-wash src="images/tournament-shooter.png" alt="" onerror="this.closest('.wash').remove()" /></div>
+    <div class="wash" aria-hidden="true"><img data-par-wash loading="lazy" decoding="async" src="images/tournament-shooter.png" alt="" onerror="this.closest('.wash').remove()" /></div>
     <div class="sec__head">
       <div><div class="sec__kick"><i></i><span>Why Boadman</span></div><h2 class="sec__title" data-scramble>Built like a bank. Plays like an arena.</h2></div>
     </div>
@@ -642,6 +681,7 @@ html.js .boot{display:flex}
   if(canHover) document.documentElement.classList.add("can-hover");
   var hasGSAP=typeof window.gsap!=="undefined";
   if(hasGSAP&&window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
+  var overdrive=false; // toggled by the Konami easter egg; read by the ember canvas
   var $=function(s,c){return (c||document).querySelector(s);};
   var $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));};
 
@@ -663,7 +703,8 @@ html.js .boot{display:flex}
     var sfx={ hover:function(){tone(880,.06,"triangle",.05);},
       click:function(){tone(300,.09,"square",.1,140); noise(.05,.04);},
       coin:function(){tone(680,.07,"square",.1); setTimeout(function(){tone(1020,.12,"square",.1);},70);},
-      tick:function(){tone(1400,.03,"sine",.03);} };
+      tick:function(){tone(1400,.03,"sine",.03);},
+      powerup:function(){ [0,1,2,4].forEach(function(n,i){ setTimeout(function(){tone(294*Math.pow(1.1225,n),.18,"square",.07);},i*70); }); } };
     var scale=[220,261.63,293.66,329.63,392,440,523.25];
     function pad(){ if(!ctx||!on) return; [146.83,220,277.18].forEach(function(f,i){ var o=ctx.createOscillator(),g=ctx.createGain(),lp=ctx.createBiquadFilter();
       o.type="sawtooth"; o.frequency.value=f*(i?1:.5); o.detune.value=(i-1)*6; lp.type="lowpass"; lp.frequency.value=520;
@@ -680,7 +721,8 @@ html.js .boot{display:flex}
       play:function(n){ if(on&&sfx[n]) sfx[n](); }, isOn:function(){return on;} };
   })();
   var sndBtn=$("#snd"),sndTxt=$("#sndTxt");
-  sndBtn.addEventListener("click",function(){ var s=Sound.toggle(); sndBtn.classList.toggle("on",s); sndBtn.setAttribute("aria-pressed",String(s)); sndTxt.textContent=s?"Sound on":"Sound off"; });
+  sndBtn.addEventListener("click",function(){ var s=Sound.toggle(); sndBtn.classList.toggle("on",s); sndBtn.setAttribute("aria-pressed",String(s)); sndTxt.textContent=s?"Sound on":"Sound off";
+    if(s){ Sound.play("powerup"); if(!sndBtn._greeted){ sndBtn._greeted=1; toast("Sound engaged // ambient + SFX"); } } });
   $$("[data-cursor],a.btn,.nav__links a").forEach(function(el){ el.addEventListener("mouseenter",function(){Sound.play("hover");}); });
   $$("[data-sfx]").forEach(function(el){ el.addEventListener("click",function(){Sound.play(el.getAttribute("data-sfx"));}); });
 
@@ -766,7 +808,7 @@ html.js .boot{display:flex}
   (function(){ if(reduce) return; var cv=$("#embers"); if(!cv) return; var cx=cv.getContext("2d"),parts=[],N=Math.min(46,Math.round(innerWidth/32));
     function size(){ cv.width=innerWidth; cv.height=Math.min(innerHeight,900); } size(); window.addEventListener("resize",size);
     for(var i=0;i<N;i++) parts.push({x:Math.random()*cv.width,y:Math.random()*cv.height,r:Math.random()*1.6+.3,vy:-(Math.random()*.5+.15),vx:(Math.random()-.5)*.2,a:Math.random()*.5+.1});
-    function loop(){ cx.clearRect(0,0,cv.width,cv.height); for(var i=0;i<parts.length;i++){ var p=parts[i]; p.y+=p.vy; p.x+=p.vx; if(p.y<-4){p.y=cv.height+4;p.x=Math.random()*cv.width;} cx.beginPath(); cx.arc(p.x,p.y,p.r,0,6.28); cx.fillStyle="rgba(255,"+Math.floor(80+p.a*90)+",40,"+p.a+")"; cx.fill(); } requestAnimationFrame(loop); } loop(); })();
+    function loop(){ cx.clearRect(0,0,cv.width,cv.height); var od=overdrive?2.6:1; for(var i=0;i<parts.length;i++){ var p=parts[i]; p.y+=p.vy*od; p.x+=p.vx*od; if(p.y<-4){p.y=cv.height+4;p.x=Math.random()*cv.width;} cx.beginPath(); cx.arc(p.x,p.y,p.r*(overdrive?1.7:1),0,6.28); cx.fillStyle="rgba(255,"+Math.floor(80+p.a*90)+","+(overdrive?95:40)+","+Math.min(1,p.a*(overdrive?1.9:1))+")"; cx.fill(); } requestAnimationFrame(loop); } loop(); })();
 
   /* ---------- REVEALS + PARALLAX ---------- */
   function initReveals(){
@@ -818,6 +860,42 @@ html.js .boot{display:flex}
     gsap.to(bar,{scaleX:1,duration:1.5,ease:"power2.inOut"});
     var pr={v:0}; gsap.to(pr,{v:100,duration:1.5,ease:"power2.inOut",onUpdate:function(){ pct.textContent=(pr.v<10?"0":"")+Math.round(pr.v)+"%"; },onComplete:function(){ gsap.delayedCall(.25,finish); }});
   })();
+
+  /* ---------- TOAST ---------- */
+  function toast(msg){ var t=document.createElement("div"); t.className="toast"; t.setAttribute("role","status");
+    t.innerHTML='<span class="d" aria-hidden="true"></span>'+msg; document.body.appendChild(t);
+    requestAnimationFrame(function(){ t.classList.add("show"); });
+    setTimeout(function(){ t.classList.remove("show"); setTimeout(function(){ t.remove(); },520); },2600); }
+
+  /* ---------- COIN BURST (micro-celebration on the primary CTA) ---------- */
+  function coinBurst(x,y){ if(reduce||!hasGSAP) return;
+    for(var i=0;i<11;i++){ var s=document.createElement("span"); s.className="coin-fx"; s.textContent="◈";
+      s.style.left=x+"px"; s.style.top=y+"px"; s.style.fontSize=(10+Math.random()*11)+"px"; document.body.appendChild(s);
+      var ang=(-Math.PI/2)+(Math.random()-.5)*1.5, dist=55+Math.random()*90;
+      gsap.to(s,{x:Math.cos(ang)*dist,y:Math.sin(ang)*dist,rotation:(Math.random()-.5)*360,opacity:0,
+        duration:.7+Math.random()*.45,ease:"power2.out",onComplete:function(){ this.targets()[0].remove(); }}); } }
+  $$('[data-sfx="coin"]').forEach(function(el){ el.addEventListener("click",function(e){ coinBurst(e.clientX,e.clientY); }); });
+
+  /* ---------- SCROLL-SPY NAV ---------- */
+  (function(){ if(!("IntersectionObserver" in window)) return;
+    var map={how:'a[href="#how"]',tournaments:'a[href="#tournaments"]',why:'a[href="#why"]',faq:'a[href="#faq"]'};
+    var secs=["how","tournaments","why","faq"].map(function(id){return document.getElementById(id);}).filter(Boolean);
+    var io=new IntersectionObserver(function(ents){ ents.forEach(function(en){ if(en.isIntersecting){
+      $$(".nav__links a").forEach(function(a){ a.classList.remove("active"); });
+      var link=$(map[en.target.id]); if(link) link.classList.add("active"); } }); },{rootMargin:"-45% 0px -50% 0px"});
+    secs.forEach(function(s){ io.observe(s); }); })();
+
+  /* ---------- KONAMI: OVERDRIVE ---------- */
+  function fireOverdrive(){ if(document.body.classList.contains("overdrive")) return;
+    document.body.classList.add("overdrive"); overdrive=true; toast("⚡ Overdrive engaged");
+    Sound.play("coin"); Sound.play("powerup");
+    setTimeout(function(){ document.body.classList.remove("overdrive"); overdrive=false; },6000); }
+  (function(){ var seq=[38,38,40,40,37,39,37,39,66,65],i=0;
+    window.addEventListener("keydown",function(e){ var k=e.keyCode||e.which; i=(k===seq[i])?i+1:(k===seq[0]?1:0); if(i===seq.length){ i=0; fireOverdrive(); } }); })();
+
+  /* ---------- DEV CONSOLE GREETING ---------- */
+  try{ console.log("%cBOADMAN","color:#FF3D1F;font:900 40px Chakra Petch,Saira,sans-serif;text-shadow:0 0 12px rgba(255,61,31,.6)");
+    console.log("%cCompete with discipline. You opened the console, so you already play to win.\nEscrow, 48h holds, named payouts, 5-year audit trail: all real, all in the open.\nBuilt with GSAP + Lenis + Web Audio. Try the Konami code.","color:#8C8C97;font:13px Chakra Petch,monospace;line-height:1.5"); }catch(e){}
 
   if(document.readyState==="complete") initReveals(); else window.addEventListener("load",initReveals);
   if(document.fonts&&document.fonts.ready) document.fonts.ready.then(function(){ if(window.ScrollTrigger) ScrollTrigger.refresh(); });
