@@ -164,6 +164,15 @@ the same bank-meets-arena reading (ledger rows of coins/entrants + live countdow
   fires, so it stays special). Skipped under reduced motion.
 - **Logo ember-flicker** on hover; **custom reticle cursor**; a **styled dev-console greeting**
   (brand voice, hints at the Konami code).
+- **Spectate Mode** — the flagship interaction, discoverable by everyone (not just Konami-literate
+  desktop users). A gently-bobbing **"Spectate the arena" cue** (bottom-center, tap on mobile,
+  or type **boadman** on desktop) launches a full-screen **arena broadcast**: each game (racing →
+  shooter → fighting) plays as a fake live match with Ken Burns motion, a LIVE tag, a ticking
+  scoreboard, a scrolling event/kill-feed, a match progress bar, broadcast scanlines, and synced
+  Web-Audio sound (impact booms, crowd swells, whoosh transitions), ending on a "Join Boadman"
+  outro. ESC / ✕ / button to exit, a mute toggle, focus restored on close, and a reduced-motion
+  fallback (static cuts, no Ken Burns). Audio is enabled for the broadcast on the user's gesture
+  and reverts to the prior state on exit.
 
 ---
 

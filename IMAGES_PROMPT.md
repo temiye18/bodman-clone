@@ -85,6 +85,36 @@ world. Prefer one strong subject per image over a busy crowd.
 ## Reused, no new asset needed
 - The **"Why Boadman" section wash** reuses `images/tournament-shooter.png` as a faint parallax
   background. No separate file required.
+- **Spectate Mode** (the full-screen arena broadcast) reuses the three `tournament-*.png` images.
+  It already works. The stills below are an OPTIONAL upgrade only.
+
+## 6 — OPTIONAL: Spectate Mode broadcast stills (only if you want extra polish)
+These are full-screen, so they want a **16:9 landscape** crop with the subject high/centered and
+**darker negative space along the bottom third** (the live HUD, scoreboard, and title sit there).
+Generate them only if you want the broadcast to look sharper than the reused card crops; the tell
+me and I'll repoint the scenes. If a file is missing, the scene falls back to its gradient.
+
+### 6a — Racing
+- **File:** `images/spectate-racing.png` · 16:9, ≥ 1920 × 1080 px.
+- **Prompt:**
+  > [Global art direction] + Wide cinematic shot of a hypercar mid-drift on a wet neon night
+  > circuit, sparks and spray trailing, coral and magenta reflections streaking the tarmac, motion
+  > blur, deep track perspective. Car in the upper-center; bottom third falls into near-black for a
+  > broadcast overlay. No text, no logos.
+
+### 6b — Shooter
+- **File:** `images/spectate-shooter.png` · 16:9, ≥ 1920 × 1080 px.
+- **Prompt:**
+  > [Global art direction] + Wide cinematic shot of an armored operative advancing through a
+  > smoke-filled ruin, coral rim light and muzzle glow, dust and haze, dramatic side angle.
+  > Subject upper-center; bottom third darker for a broadcast overlay. No text, no logos.
+
+### 6c — Fighting
+- **File:** `images/spectate-fighting.png` · 16:9, ≥ 1920 × 1080 px.
+- **Prompt:**
+  > [Global art direction] + Wide cinematic shot of two fighters clashing at the center of a
+  > fire-lit arena, embers and sparks bursting on impact, dramatic backlight, silhouetted crowd far
+  > behind in darkness. Action upper-center; bottom third darker for a broadcast overlay. No text.
 
 ## Already provided (no generation needed)
 - `boadman-logo.svg` — existing Spartan-helmet + wordmark logo. Ships as-is.
