@@ -494,9 +494,9 @@ body.spectating .spec-cue{opacity:0;pointer-events:none}
 .spectate.open{display:block}
 .spectate__stage{position:absolute;inset:0;overflow:hidden}
 .scene{position:absolute;inset:0;display:none}
-.scene__bg{position:absolute;inset:0;overflow:hidden;will-change:transform}
+.scene__bg{position:absolute;inset:0;overflow:hidden;will-change:transform;transform-origin:50% 8%}
 .scene__bg .ph{position:absolute;inset:0;z-index:0;background:radial-gradient(90% 90% at 60% 30%,rgba(255,61,31,.2),transparent 60%),linear-gradient(160deg,#1a1016,#08080a)}
-.scene__bg img{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover}
+.scene__bg img{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover;object-position:center 16%}
 .scene__grade{position:absolute;inset:0;pointer-events:none;background:radial-gradient(130% 90% at 60% 25%,transparent,rgba(5,5,6,.5) 68%,rgba(5,5,6,.92)),linear-gradient(0deg,rgba(5,5,6,.96),transparent 46%)}
 .scene__scan{position:absolute;inset:0;pointer-events:none;opacity:.4;background:repeating-linear-gradient(0deg,rgba(0,0,0,.16) 0 2px,transparent 2px 4px)}
 .scene__hud{position:absolute;left:clamp(1.2rem,5vw,4rem);right:clamp(1.2rem,5vw,4rem);bottom:clamp(1.6rem,7vh,3.6rem)}
@@ -1211,7 +1211,7 @@ body.spectating .spec-cue{opacity:0;pointer-events:none}
       el.style.display="block";
       if(!reduce&&hasGSAP){
         gsap.fromTo(el,{opacity:0,clipPath:"inset(0 100% 0 0)"},{opacity:1,clipPath:"inset(0 0% 0 0)",duration:.6,ease:"power3.out"});
-        gsap.fromTo($(".scene__bg",el),{scale:1.14,xPercent:2},{scale:1.3,xPercent:-2,duration:SCENE+.5,ease:"none"});
+        gsap.fromTo($(".scene__bg",el),{scale:1.04,xPercent:1.5},{scale:1.2,xPercent:-1.5,duration:SCENE+.5,ease:"none"});
         gsap.to($(".scene__bar i",el),{width:"100%",duration:SCENE-.4,ease:"none"});
       } else { el.style.opacity=1; $(".scene__bar i",el).style.width="100%"; }
       if(progEls[i]){ if(!reduce&&hasGSAP) gsap.fromTo(progEls[i],{width:"0%"},{width:"100%",duration:SCENE,ease:"none"}); else progEls[i].style.width="100%"; }
