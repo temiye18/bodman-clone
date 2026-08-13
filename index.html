@@ -153,10 +153,19 @@ html.js .boot{display:flex}
     linear-gradient(180deg,rgba(8,8,10,.7) 0%,transparent 22%)}
 .hero__wrap{position:relative;z-index:2;width:100%}
 .hero__copy{max-width:660px}
-.eyebrow{display:inline-flex;align-items:center;gap:.65rem;padding:.5rem .9rem;margin-bottom:1.6rem;border:1px solid var(--line-2);background:rgba(255,61,31,.06);backdrop-filter:blur(6px);font-family:var(--f-hud);font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--bone);border-radius:var(--r-b) var(--r-b) var(--r-b) 12px}
-.eyebrow .dot{width:7px;height:7px;background:var(--coral);border-radius:50%;box-shadow:0 0 10px var(--coral);animation:pulse 1.8s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
-.eyebrow .sep{color:var(--coral)}
+/* hero signature — HUD telemetry readout (replaces the generic dot-pill) */
+.sig{display:inline-flex;flex-direction:column;gap:.55rem;margin-bottom:1.7rem}
+.sig__row{display:flex;align-items:center;gap:.7rem;font-family:var(--f-hud);font-size:.73rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--bone);text-shadow:0 1px 12px rgba(0,0,0,.7)}
+.sig__node{display:inline-flex;align-items:flex-end;gap:2px;height:13px}
+.sig__node i{width:2px;height:4px;background:var(--coral);box-shadow:0 0 6px rgba(255,61,31,.75);animation:eq 1s var(--d,0s) infinite ease-in-out}
+.sig__node i:nth-child(2){--d:.12s}.sig__node i:nth-child(3){--d:.24s}.sig__node i:nth-child(4){--d:.36s}
+.sig__sep{width:1px;height:12px;background:var(--line-2);transform:skewX(-16deg);display:inline-block}
+.sig__age{color:var(--coral)}
+.sig__base{position:relative;height:3px;width:100%;min-width:250px;overflow:hidden}
+.sig__base::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,var(--line-2) 0 1px,transparent 1px 15px);-webkit-mask-image:linear-gradient(90deg,#000 52%,transparent);mask-image:linear-gradient(90deg,#000 52%,transparent);opacity:.65}
+.sig__scan{position:absolute;top:0;bottom:0;left:0;width:40px;background:linear-gradient(90deg,transparent,var(--coral),transparent);box-shadow:0 0 12px var(--coral);animation:scan 3.6s cubic-bezier(.5,0,.5,1) infinite}
+@keyframes scan{0%{left:-14%;opacity:0}14%{opacity:1}86%{opacity:1}100%{left:100%;opacity:0}}
 .hero h1{font-size:clamp(3rem,9vw,6.2rem);font-weight:900;letter-spacing:-.03em;line-height:.92;margin-bottom:1.5rem}
 .hero h1 .ln{display:block;overflow:hidden}
 .hero h1 .ln>*{display:block}
@@ -421,6 +430,7 @@ body.overdrive .fx-scan{opacity:.55}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
   .ticker__track{animation:none;transform:none}
+  .sig__scan{display:none}
   .reticle{display:none!important}
 }
 </style>
@@ -478,7 +488,17 @@ body.overdrive .fx-scan{opacity:.55}
 
     <div class="wrap hero__wrap">
       <div class="hero__copy">
-        <span class="eyebrow"><span class="dot" aria-hidden="true"></span>Global esports <span class="sep">//</span> Compliance-first <span class="sep">//</span> 18+</span>
+        <div class="sig">
+          <div class="sig__row">
+            <span class="sig__node" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+            <span>Global esports</span>
+            <span class="sig__sep" aria-hidden="true"></span>
+            <span>Compliance-first</span>
+            <span class="sig__sep" aria-hidden="true"></span>
+            <span class="sig__age">18+</span>
+          </div>
+          <div class="sig__base" aria-hidden="true"><span class="sig__scan"></span></div>
+        </div>
         <h1>
           <span class="ln"><span data-scramble>COMPETE</span></span>
           <span class="ln"><span data-scramble>WITH</span></span>
@@ -838,7 +858,7 @@ body.overdrive .fx-scan{opacity:.55}
     var tl=gsap.timeline();
     tl.from("#heroBg",{scale:1.12,duration:1.6,ease:"power3.out"},0)
       .from(".hero__scrim",{opacity:0,duration:1},0)
-      .from(".eyebrow",{opacity:0,y:16,duration:.6,ease:"power3"},.2)
+      .from(".sig",{opacity:0,y:16,duration:.6,ease:"power3"},.2)
       .from(".hero h1 .ln>*",{yPercent:110,duration:.8,ease:"power4.out",stagger:.09},.3)
       .from(".hero__sub",{opacity:0,y:18,duration:.6},"-=.35")
       .from(".hero__cta",{opacity:0,y:18,duration:.6},"-=.4")

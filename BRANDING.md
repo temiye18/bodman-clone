@@ -103,6 +103,9 @@ The page is dressed as a live operations console. Recurring devices (defined onc
 - **Live ticker** marquee of tournaments under the hero.
 - **Ember particle canvas** drifting behind the hero.
 - **HUD labels** in Chakra Petch with wide tracking and `//` separators.
+- **Hero telemetry readout** (replaces the generic AI dot-pill eyebrow): borderless, with mini
+  signal-bars, slanted tick dividers, and a tick-marked baseline that a coral scanner sweeps
+  across, like a broadcast/targeting overlay.
 - **Custom reticle cursor** (desktop, pointer:fine) that grows over interactive elements.
 
 The v1 "Stake Ticket" concept evolved into the **tournament cards + status chrome**, which carry
