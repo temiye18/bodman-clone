@@ -90,18 +90,96 @@ p{text-wrap:pretty;max-width:64ch}
 .reticle.big::before{border-color:var(--bone);border-style:dashed}
 html.js.can-hover .reticle.on{opacity:1}
 
-/* =========================================================== BOOT */
-.boot{position:fixed;inset:0;z-index:var(--z-boot);display:none;align-items:center;justify-content:center;background:var(--ink)}
+/* =========================================================== BOOT (arming sequence) */
+@property --dev{syntax:"<number>";inherits:true;initial-value:0}
+.boot{position:fixed;inset:0;z-index:var(--z-boot);display:none;align-items:center;justify-content:center;overflow:hidden;
+  background:radial-gradient(120% 92% at 50% 44%,#0d0d13 0%,var(--ink) 60%)}
 html.js .boot{display:flex}
-.boot__inner{width:min(440px,82vw);text-align:center}
-.boot__logo{height:46px;margin:0 auto 1.7rem;filter:drop-shadow(0 0 20px rgba(255,61,31,.4))}
-.boot__bar{height:3px;background:var(--panel-2);overflow:hidden;position:relative}
-.boot__bar i{position:absolute;inset:0;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,var(--ember-a),var(--ember-b),var(--coral))}
-.boot__pct{font-family:var(--f-hud);font-size:.72rem;letter-spacing:.2em;color:var(--muted);display:flex;justify-content:space-between;margin-bottom:.5rem}
-.boot__log{margin-top:1rem;text-align:left;min-height:3.4em}
-.boot__log span{display:block;font-family:var(--f-hud);font-size:.72rem;letter-spacing:.14em;color:var(--faint);text-transform:uppercase}
-.boot__log span b{color:var(--open);font-weight:600}
-.boot__skip{margin-top:1.4rem;font-family:var(--f-hud);font-size:.66rem;letter-spacing:.2em;color:var(--faint);text-transform:uppercase}
+.boot__bg{position:absolute;inset:0;pointer-events:none;opacity:.55;
+  background:
+    radial-gradient(46% 38% at 50% 46%,rgba(255,61,31,.10),transparent 70%),
+    linear-gradient(var(--line) 1px,transparent 1px) 0 0/100% 46px,
+    linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/46px 100%;
+  -webkit-mask:radial-gradient(62% 56% at 50% 46%,#000,transparent 82%);mask:radial-gradient(62% 56% at 50% 46%,#000,transparent 82%)}
+.boot__sweep{position:absolute;left:0;right:0;top:-38%;height:38%;pointer-events:none;
+  background:linear-gradient(180deg,transparent,rgba(255,61,31,.05) 62%,rgba(255,167,0,.11));animation:bootSweep 3.4s var(--ease) infinite}
+@keyframes bootSweep{0%{transform:translateY(0)}100%{transform:translateY(380%)}}
+
+.boot__console{position:relative;width:min(520px,86vw);padding:clamp(1.5rem,3.6vw,2.4rem);will-change:filter,opacity}
+.boot__corner{position:absolute;width:22px;height:22px;border:1.5px solid var(--coral);opacity:0}
+.boot__corner.tl{top:0;left:0;border-right:0;border-bottom:0}
+.boot__corner.tr{top:0;right:0;border-left:0;border-bottom:0}
+.boot__corner.bl{bottom:0;left:0;border-right:0;border-top:0}
+.boot__corner.br{bottom:0;right:0;border-left:0;border-top:0}
+
+.boot__head{display:flex;justify-content:space-between;align-items:center;opacity:0;
+  font-family:var(--f-hud);font-size:.66rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);
+  margin-bottom:clamp(1.6rem,4.4vw,2.6rem)}
+.boot__head b{color:var(--coral)}
+.boot__stat{display:inline-flex;align-items:center;gap:.55em;color:var(--warm)}
+.boot__stat::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--soon);box-shadow:0 0 10px var(--soon)}
+.boot__stat.armed{color:var(--open)}
+.boot__stat.armed::before{background:var(--open);box-shadow:0 0 12px var(--open)}
+
+.boot__target{position:relative;width:max-content;margin:0 auto;--dev:0}
+.boot__logo{height:clamp(40px,7.4vw,52px);width:auto;display:block;
+  clip-path:inset(0 calc((1 - var(--dev)) * 102%) 0 0);filter:drop-shadow(0 0 14px rgba(255,61,31,.28))}
+.boot__bloom{position:absolute;inset:-46% -20%;border-radius:50%;pointer-events:none;opacity:0;
+  background:radial-gradient(closest-side,rgba(255,61,31,.55),transparent 72%);filter:blur(6px)}
+.boot__ghost{position:absolute;inset:0;mix-blend-mode:screen;opacity:0;pointer-events:none}
+.boot__ghost img{height:clamp(40px,7.4vw,52px);width:auto;display:block}
+.boot__ghost.r{filter:sepia(1) saturate(7) hue-rotate(-32deg)}
+.boot__ghost.c{filter:sepia(1) saturate(7) hue-rotate(150deg)}
+.boot__beam{position:absolute;top:-9%;bottom:-9%;width:2px;left:calc(var(--dev) * 100%);opacity:0;
+  background:linear-gradient(180deg,transparent,var(--warm),var(--coral),transparent);box-shadow:0 0 16px 2px rgba(255,167,0,.72)}
+.boot__lk{position:absolute;width:14px;height:14px;border:1.5px solid var(--coral);opacity:0;box-shadow:0 0 8px rgba(255,61,31,.5)}
+.boot__lk.tl{top:-13px;left:-15px;border-right:0;border-bottom:0}
+.boot__lk.tr{top:-13px;right:-15px;border-left:0;border-bottom:0}
+.boot__lk.bl{bottom:-13px;left:-15px;border-right:0;border-top:0}
+.boot__lk.br{bottom:-13px;right:-15px;border-left:0;border-top:0}
+
+.boot__meter{margin-top:clamp(1.7rem,4.4vw,2.6rem)}
+.boot__pct{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.65rem;
+  font-family:var(--f-hud);font-size:.66rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.boot__pct .n{font-size:1.5rem;letter-spacing:.05em;color:var(--bone);font-variant-numeric:tabular-nums}
+.boot__pct .n b{color:var(--faint)}
+.boot__track{position:relative}
+.boot__bar{position:relative;height:9px;background:var(--panel-2);overflow:hidden;
+  -webkit-mask:repeating-linear-gradient(90deg,#000 0 7px,transparent 7px 10px);mask:repeating-linear-gradient(90deg,#000 0 7px,transparent 7px 10px)}
+.boot__bar i{position:absolute;inset:0;transform-origin:left;transform:scaleX(0);
+  background:linear-gradient(90deg,var(--ember-a),var(--ember-b) 62%,var(--coral))}
+.boot__scanhead{position:absolute;top:50%;left:0;width:2px;height:18px;transform:translate(-50%,-50%);opacity:0;
+  background:var(--warm);box-shadow:0 0 12px 2px rgba(255,167,0,.85)}
+.boot__stream{margin-top:.7rem;font-family:var(--f-hud);font-size:.62rem;letter-spacing:.2em;color:var(--faint);
+  text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.boot__stream b{color:var(--escrow)}
+
+.boot__log{margin-top:clamp(1.4rem,3.6vw,2rem);text-align:left;min-height:4.6em}
+.boot__log .ln{display:flex;align-items:center;gap:.75em;font-family:var(--f-hud);font-size:.68rem;font-weight:500;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--muted);line-height:1.95;opacity:0;transform:translateX(-7px)}
+.boot__log .ln.in{opacity:1;transform:none;transition:opacity .32s var(--ease),transform .32s var(--ease)}
+.boot__log .ln .dot{width:6px;height:6px;flex:none;border-radius:50%;background:var(--soon);box-shadow:0 0 8px var(--soon);transition:background .3s,box-shadow .3s}
+.boot__log .ln .t{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.boot__log .ln .ok{flex:none;font-weight:600;color:var(--faint);opacity:0;transition:opacity .3s}
+.boot__log .ln.done .dot{background:var(--open);box-shadow:0 0 10px var(--open)}
+.boot__log .ln.done .ok{color:var(--open);opacity:1}
+
+.boot__flash{position:absolute;inset:0;pointer-events:none;opacity:0;
+  background:radial-gradient(60% 52% at 50% 46%,rgba(255,61,31,.5),transparent 70%)}
+.boot__armed{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;opacity:0;
+  font-family:var(--f-hud);font-weight:700;font-size:clamp(1.05rem,3.4vw,1.7rem);letter-spacing:.42em;text-transform:uppercase;
+  color:var(--bone);text-shadow:0 0 26px rgba(255,61,31,.6)}
+.boot__skip{position:absolute;left:0;right:0;bottom:clamp(1.7rem,5vw,2.8rem);text-align:center;
+  font-family:var(--f-hud);font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;color:var(--faint);
+  animation:bootSkip 2.4s ease-in-out .9s infinite}
+@keyframes bootSkip{0%,100%{opacity:.3}50%{opacity:.72}}
+
+@media (prefers-reduced-motion:reduce){
+  .boot__sweep,.boot__skip{animation:none}
+  .boot__head,.boot__corner{opacity:1}
+  .boot__target{--dev:1}.boot__logo{clip-path:none}
+  .boot__skip{opacity:.5}
+}
 
 /* =========================================================== NAV */
 .nav{position:fixed;top:0;left:0;right:0;z-index:var(--z-nav);border-bottom:1px solid transparent;transition:background .3s,border-color .3s,backdrop-filter .3s}
@@ -447,13 +525,43 @@ body.overdrive .fx-scan{opacity:.55}
 
 <!-- BOOT -->
 <div class="boot" id="boot" aria-hidden="true">
-  <div class="boot__inner">
-    <img class="boot__logo" src="boadman-logo.svg" alt="" />
-    <div class="boot__pct"><span>BOADMAN OS</span><span id="bootPct">00%</span></div>
-    <div class="boot__bar"><i id="bootBar"></i></div>
+  <div class="boot__bg"></div>
+  <div class="boot__sweep"></div>
+
+  <div class="boot__console" id="bootConsole">
+    <span class="boot__corner tl"></span><span class="boot__corner tr"></span>
+    <span class="boot__corner bl"></span><span class="boot__corner br"></span>
+
+    <div class="boot__head">
+      <span>Boadman <b>OS</b></span>
+      <span class="boot__stat" id="bootStat">Cold boot</span>
+    </div>
+
+    <div class="boot__target" id="bootTarget">
+      <span class="boot__lk tl"></span><span class="boot__lk tr"></span>
+      <span class="boot__lk bl"></span><span class="boot__lk br"></span>
+      <span class="boot__bloom" id="bootBloom"></span>
+      <img class="boot__logo" src="boadman-logo.svg" alt="Boadman" />
+      <span class="boot__ghost r" aria-hidden="true"><img src="boadman-logo.svg" alt="" /></span>
+      <span class="boot__ghost c" aria-hidden="true"><img src="boadman-logo.svg" alt="" /></span>
+      <span class="boot__beam" id="bootBeam"></span>
+    </div>
+
+    <div class="boot__meter">
+      <div class="boot__pct"><span>Arming sequence</span><span class="n" id="bootPct">00<b>%</b></span></div>
+      <div class="boot__track">
+        <div class="boot__bar"><i id="bootBar"></i></div>
+        <span class="boot__scanhead" id="bootHead"></span>
+      </div>
+      <div class="boot__stream" id="bootStream">Link &#9656; 0x0000 &#9656; handshake</div>
+    </div>
+
     <div class="boot__log" id="bootLog"></div>
-    <div class="boot__skip">click to skip</div>
   </div>
+
+  <div class="boot__flash" id="bootFlash"></div>
+  <div class="boot__armed" id="bootArmed">System armed</div>
+  <div class="boot__skip">click or tap to skip</div>
 </div>
 
 <!-- NAV -->
@@ -868,18 +976,70 @@ body.overdrive .fx-scan{opacity:.55}
     gsap.delayedCall(.55,function(){ $$(".hero [data-scramble]").forEach(function(el,i){ setTimeout(function(){scramble(el);},i*120); }); });
   }
 
-  /* ---------- BOOT ---------- */
-  (function(){ var boot=$("#boot"),bar=$("#bootBar"),pct=$("#bootPct"),log=$("#bootLog");
+  /* ---------- BOOT (arming sequence) ---------- */
+  (function(){
+    var boot=$("#boot"),bar=$("#bootBar"),pct=$("#bootPct"),log=$("#bootLog"),
+        stat=$("#bootStat"),head=$("#bootHead"),stream=$("#bootStream"),
+        target=$("#bootTarget"),bloom=$("#bootBloom"),beam=$("#bootBeam"),
+        armed=$("#bootArmed"),flash=$("#bootFlash"),consoleEl=$("#bootConsole"),
+        corners=$$(".boot__corner"),locks=$$(".boot__lk"),ghosts=$$(".boot__ghost");
     var lines=["Mounting escrow ledger","Verifying KYC gateway","Syncing arena feed","Arming dispute engine","All systems operational"];
-    function finish(){ if(boot._done) return; boot._done=true; document.body.style.overflow=""; if(lenis) lenis.start();
+    function hex(){ return "0x"+("000"+Math.floor(Math.random()*65536).toString(16).toUpperCase()).slice(-4); }
+    function finish(){ if(boot._done) return; boot._done=true; if(boot._tl) boot._tl.kill();
+      document.body.style.overflow=""; if(lenis) lenis.start();
       if(hasGSAP&&!reduce) gsap.to(boot,{yPercent:-100,duration:.7,ease:"power4.inOut",onComplete:function(){boot.style.display="none";}}); else boot.style.display="none";
       heroIn(); if(window.ScrollTrigger) ScrollTrigger.refresh(); }
     boot.addEventListener("click",finish);
     if(reduce||!hasGSAP){ boot.style.display="none"; heroIn(); return; }
     document.body.style.overflow="hidden"; if(lenis) lenis.stop();
-    lines.forEach(function(t,i){ gsap.delayedCall(.18*i+.15,function(){ var sp=document.createElement("span"); sp.innerHTML=(i===lines.length-1?'<b>'+t+' ✓</b>':t+' <b>✓</b>'); log.appendChild(sp); while(log.children.length>3) log.removeChild(log.firstChild); }); });
-    gsap.to(bar,{scaleX:1,duration:1.5,ease:"power2.inOut"});
-    var pr={v:0}; gsap.to(pr,{v:100,duration:1.5,ease:"power2.inOut",onUpdate:function(){ pct.textContent=(pr.v<10?"0":"")+Math.round(pr.v)+"%"; },onComplete:function(){ gsap.delayedCall(.25,finish); }});
+
+    var pr={v:0},dev={v:0},tl=gsap.timeline(); boot._tl=tl;
+
+    tl.to(corners,{opacity:1,duration:.4,stagger:.05,ease:"power2.out"},0)
+      .to(".boot__head",{opacity:1,duration:.4,ease:"power2.out"},.08)
+      /* lock brackets fly in and snap onto the wordmark */
+      .fromTo(locks,{opacity:0,scale:1.9,x:function(i){return [-20,20,-20,20][i];},y:function(i){return [-15,-15,15,15][i];}},
+                    {opacity:1,scale:1,x:0,y:0,duration:.5,stagger:.03,ease:"power4.out"},.16)
+      /* scan beam develops the logo left to right */
+      .to(dev,{v:1,duration:.5,ease:"power2.inOut",
+          onStart:function(){beam.style.opacity=1;},
+          onUpdate:function(){target.style.setProperty("--dev",dev.v);},
+          onComplete:function(){beam.style.opacity=0;}},.28)
+      .call(function(){stat.textContent="Arming";},null,.6)
+      /* power-on RGB glitch + ember bloom on lock */
+      .to(ghosts,{opacity:.6,duration:.03},.6)
+      .to(ghosts[0],{x:3,duration:.05},.61).to(ghosts[1],{x:-3,duration:.05},.61)
+      .to(ghosts,{opacity:0,x:0,duration:.2,ease:"power2.out"},.7)
+      .fromTo(bloom,{opacity:0,scale:.6},{opacity:.85,scale:1.15,duration:.24,ease:"power2.out"},.58)
+      .to(bloom,{opacity:.3,scale:1,duration:.5,ease:"power2.out"},.82)
+      /* arm the meter: segmented bar + counter + scan head + telemetry */
+      .to(bar,{scaleX:1,duration:1.2,ease:"power2.inOut"},.66)
+      .to(pr,{v:100,duration:1.2,ease:"power2.inOut",
+          onUpdate:function(){ var v=pr.v; pct.innerHTML=(v<10?"0":"")+Math.round(v)+"<b>%</b>";
+            head.style.opacity=1; head.style.left=v+"%";
+            stream.innerHTML="Link ▸ "+hex()+" · "+hex()+" ▸ <b>secure</b>"; },
+          onComplete:function(){ head.style.opacity=0; }},.66);
+
+    /* system-check log resolves line by line */
+    lines.forEach(function(t,i){
+      tl.call(function(){
+        var d=document.createElement("div"); d.className="ln";
+        d.innerHTML='<span class="dot"></span><span class="t">'+t+'</span><span class="ok">'+(i===lines.length-1?"Online":"Cleared")+'</span>';
+        log.appendChild(d); while(log.children.length>3) log.removeChild(log.firstChild);
+        requestAnimationFrame(function(){ d.classList.add("in"); });
+        gsap.delayedCall(.26,function(){ d.classList.add("done"); });
+      },null,.72+i*.26);
+    });
+
+    /* armed handoff: lock punch, coral flash, stamp, curtain up */
+    tl.call(function(){ stat.textContent="Armed"; stat.classList.add("armed"); },null,2.05)
+      .to(locks,{scale:.82,duration:.11,ease:"power3.out",yoyo:true,repeat:1},2.05)
+      .fromTo(consoleEl,{opacity:1,filter:"blur(0px)"},{opacity:.22,filter:"blur(3px)",duration:.3,ease:"power2.out"},2.12)
+      .fromTo(flash,{opacity:0},{opacity:.9,duration:.12,ease:"power2.out"},2.12).to(flash,{opacity:0,duration:.5,ease:"power2.in"},2.24)
+      .fromTo(armed,{opacity:0,scale:.94,letterSpacing:"0.6em"},{opacity:1,scale:1,letterSpacing:"0.42em",duration:.4,ease:"power3.out"},2.16)
+      .to(armed,{opacity:.25,duration:.05,yoyo:true,repeat:3},2.44)
+      .to(armed,{opacity:0,duration:.3,ease:"power2.in"},2.74)
+      .call(finish,null,2.8);
   })();
 
   /* ---------- TOAST ---------- */
