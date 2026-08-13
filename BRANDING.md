@@ -1,6 +1,6 @@
 # Boadman — Brand Identity & Design System
 
-> **Status:** v2 · Updated 2026-08-13 · Reflects the shipped revamp in `index.html`.
+> **Status:** v3 · Updated 2026-08-13 · Reflects the immersive rebuild in `index.html`.
 > This document now describes what was built, not just what was proposed. Tokens, type, motion,
 > and sound below match the code. Companion files: `PRODUCT.md` (positioning), `IMAGES_PROMPT.md`
 > (art brief), `boadman-logo.svg` (logo), `favicon.svg`.
@@ -114,26 +114,39 @@ the same bank-meets-arena reading (ledger rows of coins/entrants + live countdow
 - Container `--maxw: 1280px`, fluid gutter `clamp(1.15rem, 4.5vw, 4.5rem)`, section rhythm
   `--sec-y: clamp(4.5rem, 9vw, 8rem)`.
 - Hairline-driven structure: bordered grids (stats, how-it-works, features) rather than drop shadows.
-- Small radii (`4–8px`) plus chamfer clips; nothing pill-shaped.
-- Sections shipped, top to bottom: nav → hero → live ticker → stats → how-it-works (4 steps) →
-  live tournaments (carousel) → why Boadman + 5 features → 48-hour hold timeline → FAQ (accordion)
-  → "SKILL. STAKE. STATUS." CTA → footer.
+- **Layered / asymmetric radius** is the signature shape: panels use a diagonal
+  `var(--r-a) var(--r-b) var(--r-a) var(--r-b)` (≈`22px 5px 22px 5px`) so opposite corners are soft
+  and the others tight. Buttons keep chamfer *cut* corners. Key panels carry a `.layered` offset
+  accent frame behind them for depth. HUD corner brackets (`.bracket > .br`) on the CTA.
+- Sections shipped, top to bottom: nav → full-bleed hero → live ticker → stats → how-it-works
+  (4 steps) → live tournaments (carousel) → **cinematic "SKILL // STAKE // STATUS" band** → why
+  Boadman + 5 features → 48-hour hold timeline → FAQ (accordion) → CTA → footer.
 - Responsive: 4-col grids collapse to 2 then 1; nav links hide < 860px; sound label hides < 560px.
 
 ---
 
-## 7. Motion (GSAP + ScrollTrigger)
-- **Boot sequence:** "BOADMAN OS" overlay with progress bar and a status log, then wipes up to
-  reveal the hero. Click-to-skip. Only exists when JS runs (`.js` gate); never blocks no-JS users.
-- **Hero intro timeline:** eyebrow → headline lines slide up from clipped rows → sub → CTAs →
-  trust stagger, then the headline words run a **scramble/decode** effect.
-- **Scroll reveals:** per-section fade/slide and staggered children (not one uniform reflex).
-- **Scramble on enter** for section titles; **count-up** for the four stats.
-- **Live countdowns** tick every second (tabular, no layout shift).
-- **Magnetic** primary/ember buttons; **reticle** cursor; **hero parallax** on mouse.
-- **Ambient ember canvas** and an animated status waveform.
-- All motion has a `prefers-reduced-motion` path: boot hidden instantly, no scramble/parallax/
-  particles/marquee, content shown in place. Reveals use `gsap.from` so content is visible if JS fails.
+## 7. Motion (GSAP + ScrollTrigger + Lenis)
+- **Lenis smooth scroll** (`lerp .09`) drives the whole page and is wired into GSAP's ticker +
+  ScrollTrigger for the "another world" inertia feel. Anchor links use `lenis.scrollTo`. Disabled
+  under reduced-motion (falls back to native/instant).
+- **Full-bleed hero:** the squad art is the hero background, blended into `--ink` by layered
+  gradient scrims (left for text, bottom to hand off to the next section). It parallaxes on scroll
+  (scrub) and drifts on mouse for depth. A thin **scroll-progress bar** sits at the very top.
+- **Cinematic band:** a full-bleed `arena-wide.png` divider ("SKILL // STAKE // STATUS") with its
+  own scrub parallax and word-by-word reveal; falls back to a lit-arena gradient if the image is absent.
+- **Section wash:** a faint, parallaxing image behind "Why Boadman" (reuses the shooter art), kept
+  low-opacity so text stays AA.
+- **Boot sequence:** "BOADMAN OS" overlay (progress bar + status log) wipes up and the hero does a
+  slow camera-push (`scale 1.12 → 1`). Click-to-skip. `.js`-gated; never blocks no-JS users.
+- **Hero intro timeline:** bg push + scrim fade, eyebrow → headline lines slide up from clipped
+  rows → sub → CTAs → trust → status panel, then the headline words **scramble/decode**.
+- **Scroll-scrub parallax** on hero bg, band bg, section wash, and each tournament card image.
+- **Reveals:** per-section fade/slide + staggered children; **scramble** on section titles;
+  **count-up** on the four stats; **magnetic** primary/ember buttons; **reticle** cursor; **ember
+  canvas** + animated status waveform; **live countdowns** every second.
+- Every effect has a `prefers-reduced-motion` path: no Lenis, boot hidden instantly, no
+  scramble/parallax/particles/marquee, content shown in place. Reveals use `gsap.from` so content
+  is visible if JS or the CDN fails.
 
 ---
 
@@ -148,9 +161,11 @@ the same bank-meets-arena reading (ledger rows of coins/entrants + live countdow
 ---
 
 ## 9. Imagery
-Photoreal cyber-military key art (hero squad + three tournament scenes + OG cover), briefed in
-`IMAGES_PROMPT.md`. Until generated, each `<img>` falls back to an on-brand HUD placeholder that
-names the expected file — so nothing ever ships as a broken-image icon. No casino/gambling imagery.
+The page is deliberately image-heavy. Photoreal cyber-military key art: hero squad (full-bleed
+background), three tournament scenes, a full-bleed cinematic band (`arena-wide.png`), a reused
+section wash, and an OG cover. All briefed in `IMAGES_PROMPT.md`. Every `<img>` has an `onerror`
+fallback (HUD placeholder or gradient), so a missing/renamed file never ships as a broken icon.
+No casino/gambling imagery.
 
 ---
 
@@ -161,7 +176,7 @@ names the expected file — so nothing ever ships as a broken-image icon. No cas
 - Sound off by default; toggle is keyboard-reachable with `aria-pressed`.
 - Semantic landmarks, single `<h1>`, `aria-expanded` on FAQ, alt text on all images, reticle is
   decorative (`aria-hidden`, additive to the native cursor rather than replacing it).
-- External GSAP scripts pinned with SRI (`integrity` + `crossorigin`).
+- External scripts (GSAP, ScrollTrigger, Lenis) pinned with SRI (`integrity` + `crossorigin`).
 
 ---
 

@@ -58,6 +58,18 @@ world. Prefer one strong subject per image over a busy crowd.
   > combat arena, one throwing a decisive strike, embers and sparks bursting on impact, dramatic
   > backlight, silhouetted crowd far behind in darkness. Frozen high-energy moment. No text.
 
+## 5b — Cinematic band (full-bleed divider)
+- **File:** `images/arena-wide.png`
+- **Aspect / size:** ultra-wide, ≥ 2400 × 1000 px (PNG). This is a full-bleed parallax band
+  behind the giant "SKILL // STAKE // STATUS" text, so keep the left third darker and the subject
+  toward the right/center.
+- **Prompt:**
+  > [Global art direction] + A packed esports arena from behind the players: silhouetted crowd,
+  > a massive glowing stage, coral and amber stage lights raking across haze, lens flares, deep
+  > perspective. Epic, cinematic, wide. Left third falls into near-black for text overlay. No text.
+- **Note:** if this file is absent the band still looks intentional (it falls back to a lit-arena
+  gradient), so it is the most optional of the set.
+
 ## 5 — Social / Open Graph cover
 - **File:** `images/og-cover.png`
 - **Aspect / size:** 1.91:1 landscape, exactly 1200 × 630 px.
@@ -69,6 +81,10 @@ world. Prefer one strong subject per image over a busy crowd.
   > Balanced, premium, poster-like. No text.
 
 ---
+
+## Reused, no new asset needed
+- The **"Why Boadman" section wash** reuses `images/tournament-shooter.png` as a faint parallax
+  background. No separate file required.
 
 ## Already provided (no generation needed)
 - `boadman-logo.svg` — existing Spartan-helmet + wordmark logo. Ships as-is.
