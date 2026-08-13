@@ -75,7 +75,7 @@ p{text-wrap:pretty;max-width:64ch}
 .fx-embers{position:fixed;inset:0;pointer-events:none;z-index:1}
 .fx-scan{position:fixed;inset:0;pointer-events:none;z-index:var(--z-overlay);opacity:.3;
   background:repeating-linear-gradient(0deg,rgba(0,0,0,.14) 0 1px,transparent 1px 3px);mix-blend-mode:overlay}
-.fx-vig{position:fixed;inset:0;pointer-events:none;z-index:var(--z-overlay);box-shadow:inset 0 0 260px 60px rgba(0,0,0,.72)}
+.fx-vig{position:fixed;inset:0;pointer-events:none;z-index:var(--z-overlay);box-shadow:inset 0 0 150px 0 rgba(0,0,0,.45)}
 
 /* scroll progress */
 .prog{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:left;
@@ -563,6 +563,7 @@ body.spectating .spec-cue{opacity:0;pointer-events:none}
   .foot__grid{grid-template-columns:1fr}
   .hero{min-height:92svh}
   .hero__scrollcue{display:none}
+  .fx-vig{box-shadow:inset 0 0 70px 0 rgba(0,0,0,.36)}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
