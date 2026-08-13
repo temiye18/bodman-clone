@@ -476,12 +476,12 @@ body.overdrive .fx-scan{opacity:.55}
 
 /* ---- spectate cue (discoverable, dangling hint) ---- */
 .spec-cue{position:fixed;left:50%;bottom:1.4rem;transform:translateX(-50%);z-index:var(--z-nav);
-  display:inline-flex;align-items:center;gap:.6rem;padding:.55rem .95rem .55rem .6rem;background:var(--glass);border:1px solid var(--line-2);
+  display:inline-flex;align-items:center;gap:.6rem;padding:.55rem .95rem .55rem .6rem;background:var(--glass);border:1px solid var(--coral);
   backdrop-filter:blur(10px);color:var(--bone);font-family:var(--f-hud);font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
-  border-radius:var(--r-b) 16px var(--r-b) 16px;box-shadow:0 14px 44px -16px rgba(0,0,0,.85);opacity:0;pointer-events:none;
-  transition:opacity .5s,border-color .25s}
+  border-radius:var(--r-b) 16px var(--r-b) 16px;box-shadow:0 14px 44px -10px rgba(255,61,31,.6);opacity:0;pointer-events:none;
+  transition:opacity .5s,border-color .25s,box-shadow .25s}
 .spec-cue.ready{opacity:1;pointer-events:auto;animation:bob 3s ease-in-out infinite}
-.spec-cue:hover{border-color:var(--coral);animation-play-state:paused}
+.spec-cue:hover{box-shadow:0 16px 52px -8px rgba(255,61,31,.8);animation-play-state:paused}
 .spec-cue__play{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--coral);color:#fff;font-size:.56rem;box-shadow:0 0 14px rgba(255,61,31,.7);flex-shrink:0}
 .spec-cue__hint{color:var(--muted);font-weight:500;letter-spacing:.1em}
 .spec-cue__hint b{color:var(--coral);letter-spacing:.22em}
@@ -942,14 +942,29 @@ body.spectating .spec-cue{opacity:0;pointer-events:none}
         if(on){ if(ctx.state==="suspended") ctx.resume(); master.gain.linearRampToValueAtTime(.9,now()+.4); music(true); }
         else { master.gain.linearRampToValueAtTime(0,now()+.3); setTimeout(function(){music(false);},320); } return on; },
       play:function(n){ if((on||showMode)&&sfx[n]) sfx[n](); }, isOn:function(){return on;},
+      enable:function(){ ensure(); if(!ctx||on) return false; on=true; if(ctx.state==="suspended") ctx.resume();
+        master.gain.cancelScheduledValues(now()); master.gain.setValueAtTime(Math.max(master.gain.value,.0001),now()); master.gain.linearRampToValueAtTime(.9,now()+.4); music(true); return true; },
       startShow:function(){ ensure(); if(!ctx) return; showMode=true; if(ctx.state==="suspended") ctx.resume();
         master.gain.cancelScheduledValues(now()); master.gain.setValueAtTime(Math.max(master.gain.value,.0001),now()); master.gain.linearRampToValueAtTime(.9,now()+.25); },
       endShow:function(){ showMode=false; if(!on&&ctx){ master.gain.linearRampToValueAtTime(0,now()+.4); } },
       setShowVol:function(v){ if(ctx) master.gain.linearRampToValueAtTime(v,now()+.15); } };
   })();
   var sndBtn=$("#snd"),sndTxt=$("#sndTxt");
-  sndBtn.addEventListener("click",function(){ var s=Sound.toggle(); sndBtn.classList.toggle("on",s); sndBtn.setAttribute("aria-pressed",String(s)); sndTxt.textContent=s?"Sound on":"Sound off";
-    if(s){ Sound.play("powerup"); if(!sndBtn._greeted){ sndBtn._greeted=1; toast("Sound engaged // ambient + SFX"); } } });
+  var sndAutoArmed=true, sndEvs=["pointerdown","mousedown","keydown","touchstart","click"];
+  function sndUI(){ var s=Sound.isOn(); sndBtn.classList.toggle("on",s); sndBtn.setAttribute("aria-pressed",String(s)); sndTxt.textContent=s?"Sound on":"Sound off"; }
+  function sndDisarm(){ sndAutoArmed=false; sndEvs.forEach(function(ev){ window.removeEventListener(ev,sndAutoStart,true); }); }
+  // music ON by default: shows on now; browsers only allow audio after a gesture, so it starts on the first interaction
+  sndBtn.classList.add("on"); sndBtn.setAttribute("aria-pressed","true"); sndTxt.textContent="Sound on";
+  function sndAutoStart(e){ if(!sndAutoArmed) return;
+    if(e&&e.target&&e.target.closest&&e.target.closest("#snd")) return; // the toggle handles itself
+    sndDisarm();
+    if(!Sound.isOn()){ Sound.enable(); toast("♪ Music on // tap to mute"); }
+    sndUI(); }
+  sndEvs.forEach(function(ev){ window.addEventListener(ev,sndAutoStart,true); });
+  sndBtn.addEventListener("click",function(){ sndDisarm();
+    if(Sound.isOn()){ Sound.toggle(); }
+    else { Sound.enable(); Sound.play("powerup"); if(!sndBtn._greeted){ sndBtn._greeted=1; toast("Sound engaged // ambient + SFX"); } }
+    sndUI(); });
   $$("[data-cursor],a.btn,.nav__links a").forEach(function(el){ el.addEventListener("mouseenter",function(){Sound.play("hover");}); });
   $$("[data-sfx]").forEach(function(el){ el.addEventListener("click",function(){Sound.play(el.getAttribute("data-sfx"));}); });
 

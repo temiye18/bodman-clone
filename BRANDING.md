@@ -180,9 +180,11 @@ the same bank-meets-arena reading (ledger rows of coins/entrants + live countdow
 - A synthesized sound engine (no audio files): SFX for hover, click, coin, and a UI tick, plus a
   generative **ambient music** bed (slow saw pad on a lowpass + sparse triangle arpeggio in a
   minor scale).
-- **Off by default.** The nav "Sound off/on" toggle is the only thing that starts audio (respects
-  autoplay policy and accessibility). When on, the toggle shows an animated EQ and `aria-pressed`
-  flips. Master gain ramps in/out; SFX only fire while enabled.
+- **On by default.** The nav toggle shows "Sound on" from load, and the ambient bed starts on the
+  visitor's first interaction (pointer/key/touch) — the earliest a browser permits audio. A brief
+  "♪ Music on // tap to mute" toast points at the control. If the visitor's *first* action is the
+  toggle itself, that's treated as opting out (stays off). Mute any time via the same toggle; it
+  shows an animated EQ and flips `aria-pressed`. Master gain ramps in/out; SFX fire while enabled.
 
 ---
 
