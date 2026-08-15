@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Boadman for Publishers — Your game earns, you run nothing</title>
+<meta name="description" content="Register a title and take a share of what Boadman earns on every competition played on it. 15% of our commission, zero cost, no integration, and a kill switch you hold. 18+." />
+<meta name="theme-color" content="#08080A" />
+<link rel="canonical" href="https://bodman-clone.vercel.app/for-publishers.html" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Boadman" />
+<meta property="og:url" content="https://bodman-clone.vercel.app/for-publishers.html" />
+<meta property="og:title" content="Boadman for Publishers — Your game earns, you run nothing" />
+<meta property="og:description" content="15% of Boadman's commission on every competition on your title. Zero cost, zero work, one switch stops it. 18+." />
+<meta property="og:image" content="https://bodman-clone.vercel.app/images/og-publishers.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://bodman-clone.vercel.app/images/og-publishers.png" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Saira:wght@400;500;600;700;800;900&family=Chakra+Petch:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="assets/arena.css" />
+<style>
+/* page-specific: genre catalogue + kill-switch illustration */
+.genre{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.9rem}
+.gchip{display:flex;align-items:center;gap:.7rem;padding:1rem 1.1rem;border:1px solid var(--line);background:var(--panel);border-radius:var(--r-b) 12px var(--r-b) 12px;transition:border-color .3s,background .3s}
+.gchip:hover{border-color:var(--coral);background:var(--panel-2)}
+.gchip svg{width:22px;height:22px;color:var(--coral);flex-shrink:0}
+.gchip b{font-family:var(--f-hud);font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--bone)}
+.gchip small{display:block;font-family:var(--f-hud);font-size:.58rem;letter-spacing:.1em;color:var(--faint);text-transform:uppercase;margin-top:.2rem}
+.switch{display:flex;flex-direction:column;gap:.9rem}
+.krow{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.2rem;border:1px solid var(--line-2);border-radius:var(--r-b) 12px var(--r-b) 12px;background:var(--panel)}
+.krow .kl{font-family:var(--f-hud);font-size:.82rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--bone)}
+.krow .kl .kstate{display:block;font-size:.62rem;color:var(--open);letter-spacing:.12em;margin-top:.3rem}
+.krow .kl .kstate.stopped{color:var(--coral)}
+.ktoggle{position:relative;width:62px;height:30px;border-radius:20px;border:1px solid rgba(52,227,155,.5);background:rgba(52,227,155,.16);cursor:pointer;flex-shrink:0;transition:background .3s,border-color .3s}
+.ktoggle .kn{position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:var(--open);box-shadow:0 0 10px rgba(52,227,155,.6);transition:transform .3s var(--ease),background .3s,box-shadow .3s}
+.ktoggle.stopped{background:rgba(255,61,31,.14);border-color:rgba(255,61,31,.6)}
+.ktoggle.stopped .kn{transform:translateX(32px);background:var(--coral);box-shadow:0 0 10px rgba(255,61,31,.6)}
+.illus-tag{font-family:var(--f-hud);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);border:1px solid var(--line-2);padding:.3rem .55rem;border-radius:3px;display:inline-block;margin-bottom:1.1rem}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#top">Skip to content</a>
+<div class="prog" id="prog" aria-hidden="true"></div>
+<div class="fx-grid" aria-hidden="true"></div>
+<canvas class="fx-embers" id="embers" aria-hidden="true"></canvas>
+<div class="fx-scan" aria-hidden="true"></div>
+<div class="fx-vig" aria-hidden="true"></div>
+<div class="reticle" id="reticle" aria-hidden="true"></div>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="index.html" data-cursor aria-label="Boadman home"><img src="boadman-logo.svg" alt="Boadman" /></a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="index.html#how">How it works</a><a href="#pillars">Why it works</a><a href="#numbers">The numbers</a><a href="for-brands.html">Brands</a>
+    </nav>
+    <div class="nav__right">
+      <button class="snd" id="snd" aria-pressed="false" aria-label="Enable sound and music">
+        <span class="snd__eq" aria-hidden="true"><i style="--i:0s"></i><i style="--i:.15s"></i><i style="--i:.3s"></i><i style="--i:.45s"></i></span>
+        <span class="txt" id="sndTxt">Sound off</span>
+      </button>
+      <a class="signin" href="index.html" data-cursor>← Boadman</a>
+      <a class="btn btn--primary btn--sm" href="/waitlist/publishers" data-cursor data-sfx="click">Join waitlist<span class="btn__ar" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" id="hero-top">
+    <div class="hero__bg" id="heroBg" aria-hidden="true">
+      <div class="hero__ph"></div>
+      <img src="images/publishers-hero.png" alt="" onerror="this.remove()" />
+    </div>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="hero__tag" aria-hidden="true"><span class="dot"></span>For publishers // waitlist open</div>
+
+    <div class="wrap hero__wrap">
+      <div class="hero__copy">
+        <div class="sig">
+          <div class="sig__row">
+            <span class="sig__node" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+            <span>For publishers</span><span class="sig__sep" aria-hidden="true"></span>
+            <span>Royalties</span><span class="sig__sep" aria-hidden="true"></span>
+            <span class="sig__age">Kill switch</span>
+          </div>
+          <div class="sig__base" aria-hidden="true"><span class="sig__scan"></span></div>
+        </div>
+        <h1>
+          <span class="ln"><span data-scramble>EARN ON YOUR GAME.</span></span>
+          <span class="ln"><span data-scramble>RUN NONE OF IT.</span></span>
+          <span class="ln"><em data-scramble>STOP IT ANYTIME.</em></span>
+        </h1>
+        <p class="hero__sub">Register a title and take a share of what Boadman earns on every competition played on it. No listing fee, no revenue share to us, no minimum, no integration, no work.</p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="/waitlist/publishers" data-cursor data-sfx="coin">Join the publisher waitlist<span class="btn__ar" aria-hidden="true">→→</span></a>
+          <a class="btn btn--ghost" href="#numbers" data-cursor data-sfx="click">How it pays</a>
+        </div>
+        <ul class="trust">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>15% of our commission</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Zero cost</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Kill switch you hold</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>One publisher per title</li>
+        </ul>
+        <p class="rate-note">18+. Royalty accrues into a separate balance on the wallet you already have.</p>
+      </div>
+    </div>
+
+    <aside class="hero__status" aria-label="Royalty rate">
+      <div class="top"><span class="k">Royalty on your title</span><span class="v"><span class="dot"></span>15% of our cut</span></div>
+      <svg viewBox="0 0 260 30" preserveAspectRatio="none" aria-hidden="true"><polyline id="wavePath" fill="none" stroke="#34E39B" stroke-width="1.5" points=""/></svg>
+    </aside>
+    <div class="hero__scrollcue" aria-hidden="true"><i></i>Scroll to enter</div>
+  </section>
+
+  <!-- TICKER (static) -->
+  <div class="ticker" aria-hidden="true"><div class="ticker__track">
+    <div class="cell"><span class="liv">15%</span><span class="div">/</span><b>Of Boadman's commission</b><span class="div">·</span>from our cut, not your players'</div>
+    <div class="cell"><b>Zero cost</b><span class="div">·</span>no listing fee, no SDK</div>
+    <div class="cell"><b>Two kill switches</b><span class="div">·</span>tournaments and 1v1</div>
+    <div class="cell"><b>One publisher per title</b><span class="div">·</span>permanent, first come</div>
+    <div class="cell"><span class="liv">15%</span><span class="div">/</span><b>Of Boadman's commission</b><span class="div">·</span>from our cut, not your players'</div>
+    <div class="cell"><b>Zero cost</b><span class="div">·</span>no listing fee, no SDK</div>
+    <div class="cell"><b>Two kill switches</b><span class="div">·</span>tournaments and 1v1</div>
+    <div class="cell"><b>One publisher per title</b><span class="div">·</span>permanent, first come</div>
+  </div></div>
+
+  <!-- FOUR PILLARS -->
+  <section class="sec wrap" id="pillars">
+    <div class="sec__head"><div><div class="sec__kick"><i></i><span>Why it works</span></div><h2 class="sec__title" data-scramble>A revenue line with an off switch</h2></div></div>
+    <div class="how" data-stagger>
+      <article class="step"><div class="step__n">01</div>
+        <svg class="step__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v18M7 8h7a3 3 0 010 6H7"/></svg>
+        <div class="step__meta">From our commission</div><h3>It pays out of our cut, not yours</h3><p>The royalty is a share of what Boadman earns, our own revenue line. It does not come out of the prize pool, the entry fees, or anything a player pays. You are not taxing your own community.</p></article>
+      <article class="step"><div class="step__n">02</div>
+        <svg class="step__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16" opacity=".4"/><path d="M9 4l6 16"/></svg>
+        <div class="step__meta">No integration</div><h3>Zero cost, zero work</h3><p>No fee to list. No revenue share to us. No minimum, no SDK, no build. Register the title and it is live in the catalogue.</p></article>
+      <article class="step"><div class="step__n">03</div>
+        <svg class="step__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="9" width="16" height="12" rx="2"/><path d="M12 13v4M8 9V7a4 4 0 018 0v2"/></svg>
+        <div class="step__meta">You hold it</div><h3>One switch, and new competitions stop</h3><p>Two independent kill switches per title, one for tournaments and one for 1v1, and you hold them. Flip one and no new competition starts on that title. Anything already running finishes.</p></article>
+      <article class="step"><div class="step__n">04</div>
+        <svg class="step__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 21l-5.4 2.9.9-5.5-4-3.9 5.5-.8z"/></svg>
+        <div class="step__meta">First come</div><h3>One publisher per title, permanently</h3><p>Registering a title makes your account its publisher of record. One owner, permanent. A genuine reason to move early.</p></article>
+    </div>
+  </section>
+
+  <!-- KILL SWITCH ILLUSTRATION -->
+  <section class="sec wrap">
+    <div class="sec__head"><div><div class="sec__kick"><i></i><span>The switch</span></div><h2 class="sec__title" data-scramble>You are one flip from stopping new play</h2></div></div>
+    <div class="duo" data-stagger>
+      <div class="panel">
+        <span class="illus-tag">Illustration of the mechanic</span>
+        <div class="switch">
+          <div class="krow">
+            <span class="kl">Tournaments<span class="kstate" data-state>New tournaments allowed</span></span>
+            <button class="ktoggle" data-kill data-sfx="tick" aria-pressed="false" aria-label="Toggle tournaments illustration"><span class="kn" aria-hidden="true"></span></button>
+          </div>
+          <div class="krow">
+            <span class="kl">1v1 challenges<span class="kstate" data-state>New challenges allowed</span></span>
+            <button class="ktoggle" data-kill data-sfx="tick" aria-pressed="false" aria-label="Toggle 1v1 illustration"><span class="kn" aria-hidden="true"></span></button>
+          </div>
+        </div>
+      </div>
+      <div class="panel" style="display:flex;flex-direction:column;justify-content:center">
+        <h3>One switch. New competitions stop.</h3>
+        <p>The switches are yours, per title, held by you. This is the direct answer to the brand-safety worry: you never have to find out from Twitter.</p>
+        <p>Be clear on the boundary: flipping a switch stops <b>new</b> competitions. Anything already running finishes on its own. That is honest, and still enough to keep control.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CINEMATIC BAND -->
+  <section class="band" aria-label="Register, earn, stop">
+    <div class="band__bg" id="bandBg" aria-hidden="true"><div class="band__ph"></div><img loading="lazy" decoding="async" src="images/publishers-hero.png" alt="" onerror="this.remove()" /></div>
+    <div class="band__scrim" aria-hidden="true"></div>
+    <div class="wrap band__in">
+      <h2 data-band><span class="w1">REGISTER.</span><span class="sep">//</span><span class="w2">EARN.</span><span class="sep">//</span><span class="w3">STOP.</span></h2>
+      <p>Put a title in the catalogue, collect a share of every competition it hosts, and keep the switch that turns new ones off.</p>
+      <div class="band__stat">
+        <div><span class="mono">15%</span><small>Of our commission · now</small></div>
+        <div><span class="mono">£0</span><small>Cost to publish</small></div>
+        <div><span class="mono">500</span><small>Coins min payout · £50</small></div>
+        <div><span class="mono">10p</span><small>Per coin</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE NUMBERS -->
+  <section class="sec wrap" id="numbers">
+    <div class="sec__head"><div><div class="sec__kick"><i></i><span>The numbers</span></div><h2 class="sec__title" data-scramble>A realistic example, not a flattering one</h2>
+      <p class="sec__lead" style="color:var(--muted);max-width:60ch;margin-top:1rem">The royalty is a share of Boadman's commission, not of the pot. You will do this arithmetic in about four seconds, so here it is done honestly. Rates are read live from config, so treat them as current.</p></div></div>
+
+    <div class="numbers__grid" style="display:grid;grid-template-columns:1.15fr .85fr;gap:1.2rem;align-items:start">
+      <div class="ledger" data-reveal>
+        <div class="ledger__head"><span>Worked example</span><b>Tournament · £100 prize</b></div>
+        <div class="ledger__row"><span class="k">Prize pool</span><span class="v">£100</span></div>
+        <div class="ledger__row"><span class="k">Boadman commission<small>currently 12%</small></span><span class="v">£12</span></div>
+        <div class="ledger__row"><span class="k">Creation fee<small>flat</small></span><span class="v">£1</span></div>
+        <div class="ledger__row total"><span class="k">Publisher royalty</span><span class="v">£1.80<small>15% of our £12</small></span></div>
+        <div class="ledger__note">The royalty is 15% of Boadman's commission, not of the prize or the entry fees. A passive, zero-cost line on titles you already own, not a windfall. Tournament commission is currently 12%. 1 coin = 10p.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1.2rem">
+        <div class="ledger">
+          <div class="ledger__head"><span>Rate card</span><b>Read live · can change</b></div>
+          <div class="ledger__row"><span class="k">Royalty</span><span class="v hot">15% of our commission</span></div>
+          <div class="ledger__row"><span class="k">Cost to publish</span><span class="v zero">Nothing</span></div>
+          <div class="ledger__row"><span class="k">Minimum before payout</span><span class="v">500 coins · £50</span></div>
+          <div class="ledger__row"><span class="k">Coin rate</span><span class="v">1 coin = 10p</span></div>
+        </div>
+        <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16v.01"/></svg>
+          <p><b>When it accrues.</b> Tournament royalty accrues when the competition is created, before anyone plays, and is not clawed back if it is cancelled. Challenge royalty accrues at settlement.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GENRE CATALOGUE -->
+  <section class="sec wrap">
+    <div class="sec__head"><div><div class="sec__kick"><i></i><span>The catalogue</span></div><h2 class="sec__title" data-scramble>Genres, not titles</h2></div></div>
+    <div class="genre" data-stagger>
+      <div class="gchip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="2"/></svg><span><b>FPS</b><small>Shooter</small></span></div>
+      <div class="gchip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg><span><b>Strategy</b><small>Turn &amp; RTS</small></span></div>
+      <div class="gchip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6h4l2 6H6zM4 6l-1 6v6h18v-6l-3-9h-6"/><circle cx="7" cy="18" r="1.5"/><circle cx="17" cy="18" r="1.5"/></svg><span><b>Racing</b><small>Circuit &amp; sprint</small></span></div>
+      <div class="gchip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 11V7a2 2 0 014 0M11 11V6a2 2 0 014 0v5M15 11V8a2 2 0 014 0v6a6 6 0 01-6 6H10l-4-4"/></svg><span><b>Fighting</b><small>1v1 combat</small></span></div>
+      <div class="gchip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 21l2-9h10l2 9M8 12V7a4 4 0 018 0v5"/><circle cx="12" cy="4" r="1.5"/></svg><span><b>Sports</b><small>Head to head</small></span></div>
+      <div class="gchip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 4h6v3a2 2 0 004 0h1v13H4V7h1a2 2 0 004 0z"/></svg><span><b>Puzzle</b><small>Score attack</small></span></div>
+      <div class="gchip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 20h8M9 20l1-5H8l2-3-1-2 3-2 3 2-1 2 2 3h-2l1 5"/></svg><span><b>Chess</b><small>Unbranded, ready</small></span></div>
+    </div>
+    <p class="rate-note">Boadman holds rights to no game. Titles are registered by their publishers; the catalogue is organised by genre.</p>
+  </section>
+
+  <!-- JOURNEY -->
+  <section class="sec wrap" id="apply">
+    <div class="sec__head"><div><div class="sec__kick"><i></i><span>Getting started</span></div><h2 class="sec__title" data-scramble>No new account required</h2></div></div>
+    <div class="duo" data-stagger>
+      <div class="panel">
+        <div class="panel__k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-6 8-6s8 2 8 6"/></svg><span>Publisher is a capability</span></div>
+        <h3>Register a title from the wallet you already have</h3>
+        <p>A verified player account or an approved brand registers a title and becomes its publisher. Royalty accrues into a separate balance on that same wallet. There is no separate publisher account to create.</p>
+      </div>
+      <div class="panel" style="display:flex;flex-direction:column;justify-content:center">
+        <h3>The door today is the waitlist</h3>
+        <p>The royalty, the kill switches and the catalogue run through our API now. The studio-facing screens are on the way. Join the waitlist and we will bring you in as they land.</p>
+        <a class="btn btn--ember" href="/waitlist/publishers" data-cursor data-sfx="coin" style="margin-top:1.5rem;align-self:flex-start">Join the waitlist<span class="btn__ar" aria-hidden="true">→→</span></a>
+        <p class="rate-note">Route: /waitlist/publishers · 18+</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta wrap">
+    <div class="cta__box layered bracket" data-reveal>
+      <span class="br tl" aria-hidden="true"></span><span class="br br2" aria-hidden="true"></span>
+      <div class="cta__l"><h2><span class="w1">REGISTER THE TITLE.</span> <span class="w3">TAKE THE CUT.</span></h2><p>A passive line on games you already own. And a switch you keep.</p></div>
+      <div class="cta__r"><a class="btn btn--ember" href="/waitlist/publishers" data-cursor data-sfx="coin">Join the waitlist<span class="btn__ar" aria-hidden="true">→→</span></a><span class="cta__note">18+ only · royalty rates read live from config</span></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div class="foot__brand"><img src="boadman-logo.svg" alt="Boadman" />
+        <p>Your game earns while other people run the play. Costs nothing, and one switch stops new competitions.</p>
+        <div class="resp">Only stake what you can afford to lose.</div></div>
+      <div class="foot__col"><h4>Platform</h4><a href="index.html#tournaments">Tournaments</a><a href="for-brands.html">For brands</a><a href="for-publishers.html">For publishers</a><a href="index.html#faq">FAQ</a></div>
+      <div class="foot__col"><h4>Publishers</h4><a href="#pillars">Why it works</a><a href="#numbers">The numbers</a><a href="/waitlist/publishers">Join the waitlist</a></div>
+      <div class="foot__col"><h4>Legal</h4><a href="index.html">Terms of Service</a><a href="index.html">Privacy Policy</a><a href="index.html">Responsible play</a></div>
+    </div>
+    <div class="foot__bar"><span>© 2026 Boadman Ltd · <span class="v">18+ only</span></span><span class="v">Royalty rates read live from config · payout minimum 500 coins</span></div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" integrity="sha384-O55L/6rhHr9CFvrxqv5luxOCcmVaBmETbZbJDP+Do8T0pztTACsFBD/IXCNkj7DV" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="assets/arena.js"></script>
+<script>
+/* kill-switch illustration (page-specific, independent of the shared engine) */
+(function(){
+  var toggles=document.querySelectorAll("[data-kill]");
+  Array.prototype.forEach.call(toggles,function(btn){
+    var row=btn.closest(".krow"), state=row.querySelector("[data-state]");
+    var kind=/1v1|challenge/i.test(row.textContent)?"challenges":"tournaments";
+    btn.addEventListener("click",function(){
+      var stopped=btn.classList.toggle("stopped");
+      btn.setAttribute("aria-pressed",String(stopped));
+      state.classList.toggle("stopped",stopped);
+      state.textContent=stopped?("New "+kind+" stopped"):("New "+kind+" allowed");
+    });
+  });
+})();
+</script>
+</body>
+</html>

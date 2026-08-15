@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Boadman for Brands — Put your money in the prize pool</title>
+<meta name="description" content="Sponsor a competition and Boadman takes nothing: 100% of your contribution reaches the prize pool. Every coin is escrowed before play and recorded on an auditable ledger. 18+." />
+<meta name="theme-color" content="#08080A" />
+<link rel="canonical" href="https://bodman-clone.vercel.app/for-brands.html" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Boadman" />
+<meta property="og:url" content="https://bodman-clone.vercel.app/for-brands.html" />
+<meta property="og:title" content="Boadman for Brands — Put your money in the prize pool" />
+<meta property="og:description" content="Fund the play, not an agency. 0% commission on sponsorship, escrowed upfront, every coin a line item. 18+." />
+<meta property="og:image" content="https://bodman-clone.vercel.app/images/og-brands.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://bodman-clone.vercel.app/images/og-brands.png" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Saira:wght@400;500;600;700;800;900&family=Chakra+Petch:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="assets/arena.css" />
+</head>
+<body>
+
+<a class="skip" href="#top">Skip to content</a>
+<div class="prog" id="prog" aria-hidden="true"></div>
+<div class="fx-grid" aria-hidden="true"></div>
+<canvas class="fx-embers" id="embers" aria-hidden="true"></canvas>
+<div class="fx-scan" aria-hidden="true"></div>
+<div class="fx-vig" aria-hidden="true"></div>
+<div class="reticle" id="reticle" aria-hidden="true"></div>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="index.html" data-cursor aria-label="Boadman home"><img src="boadman-logo.svg" alt="Boadman" /></a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="index.html#how">How it works</a><a href="#pillars">Why it works</a><a href="#numbers">The numbers</a><a href="for-publishers.html">Publishers</a>
+    </nav>
+    <div class="nav__right">
+      <button class="snd" id="snd" aria-pressed="false" aria-label="Enable sound and music">
+        <span class="snd__eq" aria-hidden="true"><i style="--i:0s"></i><i style="--i:.15s"></i><i style="--i:.3s"></i><i style="--i:.45s"></i></span>
+        <span class="txt" id="sndTxt">Sound off</span>
+      </button>
+      <a class="signin" href="index.html" data-cursor>← Boadman</a>
+      <a class="btn btn--primary btn--sm" href="/signup-brand" data-cursor data-sfx="click">Apply<span class="btn__ar" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" id="hero-top">
+    <div class="hero__bg" id="heroBg" aria-hidden="true">
+      <div class="hero__ph"></div>
+      <img src="images/brands-hero.png" alt="" onerror="this.remove()" />
+    </div>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="hero__tag" aria-hidden="true"><span class="dot"></span>For brands // vetted onboarding</div>
+
+    <div class="wrap hero__wrap">
+      <div class="hero__copy">
+        <div class="sig">
+          <div class="sig__row">
+            <span class="sig__node" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+            <span>For brands</span><span class="sig__sep" aria-hidden="true"></span>
+            <span>Sponsorship</span><span class="sig__sep" aria-hidden="true"></span>
+            <span class="sig__age">18+</span>
+          </div>
+          <div class="sig__base" aria-hidden="true"><span class="sig__scan"></span></div>
+        </div>
+        <h1>
+          <span class="ln"><span data-scramble>PUT YOUR MONEY</span></span>
+          <span class="ln"><span data-scramble>IN THE PRIZE POOL,</span></span>
+          <span class="ln"><em data-scramble>NOT THE AGENCY.</em></span>
+        </h1>
+        <p class="hero__sub">Fund a competition and players compete for exactly that money. No impressions, no ad inventory, no interpretive dance about reach. The spend is the prize.</p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="/signup-brand" data-cursor data-sfx="coin">Apply<span class="btn__ar" aria-hidden="true">→→</span></a>
+          <a class="btn btn--ghost" href="#numbers" data-cursor data-sfx="click">See the numbers</a>
+        </div>
+        <ul class="trust">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>0% on sponsorship</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Escrowed upfront</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Every coin a line item</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Business-verified</li>
+        </ul>
+        <p class="rate-note">18+ only. Brand wallets are closed-loop: money in is spent on Boadman, there is no cash-out.</p>
+      </div>
+    </div>
+
+    <aside class="hero__status" aria-label="Sponsorship rate">
+      <div class="top"><span class="k">Commission on sponsorship</span><span class="v"><span class="dot"></span>0% now</span></div>
+      <svg viewBox="0 0 260 30" preserveAspectRatio="none" aria-hidden="true"><polyline id="wavePath" fill="none" stroke="#34E39B" stroke-width="1.5" points=""/></svg>
+    </aside>
+    <div class="hero__scrollcue" aria-hidden="true"><i></i>Scroll to enter</div>
+  </section>
+
+  <!-- BRAND TICKER (static) -->
+  <div class="ticker" aria-hidden="true"><div class="ticker__track">
+    <div class="cell"><span class="liv">0%</span><span class="div">/</span><b>Sponsorship commission</b><span class="div">·</span>100% reaches the pool</div>
+    <div class="cell"><b>Escrowed upfront</b><span class="div">·</span>funded before anyone plays</div>
+    <div class="cell"><b>Every coin a line item</b><span class="div">·</span>an auditable ledger</div>
+    <div class="cell"><b>Business-verified</b><span class="div">·</span>no fast lane, no bypass</div>
+    <div class="cell"><span class="liv">0%</span><span class="div">/</span><b>Sponsorship commission</b><span class="div">·</span>100% reaches the pool</div>
+    <div class="cell"><b>Escrowed upfront</b><span class="div">·</span>funded before anyone plays</div>
+    <div class="cell"><b>Every coin a line item</b><span class="div">·</span>an auditable ledger</div>
+    <div class="cell"><b>Business-verified</b><span class="div">·</span>no fast lane, no bypass</div>
+  </div></div>
+
+  <!-- FOUR PILLARS -->
+  <section class="sec wrap" id="pillars">
+    <div class="sec__head"><div><div class="sec__kick"><i></i><span>Why it works</span></div><h2 class="sec__title" data-scramble>Four things most channels can't say</h2></div></div>
+    <div class="how" data-stagger>
+      <article class="step"><div class="step__n">01</div>
+        <svg class="step__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 22V7M12 7S8 7 8 4.5 12 7 12 7zM12 7s4 0 4-2.5S12 7 12 7z"/></svg>
+        <div class="step__meta">0% commission</div><h3>Sponsor, and we take nothing</h3><p>When you sponsor a competition, 100% of your contribution goes into the prize pool. Every coin you put in is a coin a player can win.</p></article>
+      <article class="step"><div class="step__n">02</div>
+        <svg class="step__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+        <div class="step__meta">Auditable ledger</div><h3>Every coin is a line item</h3><p>You get a complete, typed, referenced record: prize escrowed, commission, creation fee, releases, refunds. Not soft metrics, a financial record you could hand to finance.</p></article>
+      <article class="step"><div class="step__n">03</div>
+        <svg class="step__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+        <div class="step__meta">Escrowed upfront</div><h3>Locked before anyone plays</h3><p>You fund the whole prize before a single player joins, and it sits in escrow. Players can see the pool is real, which is exactly why they enter.</p></article>
+      <article class="step"><div class="step__n">04</div>
+        <svg class="step__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+        <div class="step__meta">Business-verified</div><h3>No one buys their way in</h3><p>Every brand passes company-registry, directors and beneficial-owner checks before a coin moves. No fast lane, no bypass. Everyone beside you was checked too.</p></article>
+    </div>
+  </section>
+
+  <!-- CINEMATIC BAND -->
+  <section class="band" aria-label="Sponsor, escrow, win">
+    <div class="band__bg" id="bandBg" aria-hidden="true"><div class="band__ph"></div><img loading="lazy" decoding="async" src="images/brands-hero.png" alt="" onerror="this.remove()" /></div>
+    <div class="band__scrim" aria-hidden="true"></div>
+    <div class="wrap band__in">
+      <h2 data-band><span class="w1">SPONSOR.</span><span class="sep">//</span><span class="w2">ESCROW.</span><span class="sep">//</span><span class="w3">WIN.</span></h2>
+      <p>The money you put in is the money they play for. Nothing is skimmed on the way, and nothing moves until the result is verified.</p>
+      <div class="band__stat">
+        <div><span class="mono">0%</span><small>Sponsorship commission</small></div>
+        <div><span class="mono">15%</span><small>Brand-hosted, on top · now</small></div>
+        <div><span class="mono">10</span><small>Coins creation fee</small></div>
+        <div><span class="mono">10p</span><small>Per coin</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TWO WAYS TO FUND -->
+  <section class="sec wrap">
+    <div class="sec__head"><div><div class="sec__kick"><i></i><span>Two ways in</span></div><h2 class="sec__title" data-scramble>Fund it, or back it</h2></div></div>
+    <div class="duo" data-stagger>
+      <div class="panel">
+        <div class="panel__k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l3 6 6 .9-4.5 4.3 1 6.3L12 17.8 6.5 20.5l1-6.3L3 9.9 9 9z"/></svg><span>Host your own</span></div>
+        <h3>A branded competition, your name on it</h3>
+        <p>Choose the prize, the entry fee, the format and the size. Your competition, your rules, funded by you and run on the platform.</p>
+      </div>
+      <div class="panel">
+        <div class="panel__k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0112 6a5.5 5.5 0 019.5 6c-2.5 4.5-9.5 9-9.5 9z"/></svg><span>Back someone else's</span></div>
+        <h3>Sponsor a competition that already exists</h3>
+        <p>Put your money straight into the pool of a competition that is already running. Zero commission on the contribution, so all of it reaches the players.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE NUMBERS -->
+  <section class="sec wrap" id="numbers">
+    <div class="sec__head"><div><div class="sec__kick"><i></i><span>The numbers</span></div><h2 class="sec__title" data-scramble>Every coin, on the record</h2>
+      <p class="sec__lead" style="color:var(--muted);max-width:60ch;margin-top:1rem">Commission is charged on top, never taken out of the prize. What you advertise is exactly what the winner competes for. Rates are read live from platform config, so treat them as current, not fixed.</p></div></div>
+
+    <div class="numbers__grid" style="display:grid;grid-template-columns:1.15fr .85fr;gap:1.2rem;align-items:start">
+      <div class="ledger" data-reveal>
+        <div class="ledger__head"><span>Worked example</span><b>Brand-hosted · £1,000 prize</b></div>
+        <div class="ledger__row"><span class="k">Prize pool<small>what players compete for</small></span><span class="v">◈ 10,000<small>£1,000</small></span></div>
+        <div class="ledger__row"><span class="k">Platform commission<small>currently 15%, on top</small></span><span class="v hot">◈ 1,500<small>£150</small></span></div>
+        <div class="ledger__row"><span class="k">Competition creation fee<small>flat</small></span><span class="v">◈ 10<small>£1</small></span></div>
+        <div class="ledger__row total"><span class="k">You fund</span><span class="v">◈ 11,510<small>≈ £1,151</small></span></div>
+        <div class="ledger__row"><span class="k">Taken from the £1,000 prize</span><span class="v zero">Nothing</span></div>
+        <div class="ledger__note">Rates are read live from config; commission is currently 15%. Cancel before it starts and the prize and commission both return. Cancel after it starts and the prize returns, the commission does not. 1 coin = 10p.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1.2rem">
+        <div class="ledger">
+          <div class="ledger__head"><span>Rate card</span><b>Read live · can change</b></div>
+          <div class="ledger__row"><span class="k">Commission on sponsorship</span><span class="v zero">0% now</span></div>
+          <div class="ledger__row"><span class="k">Commission, brand-hosted</span><span class="v">15% on top · now</span></div>
+          <div class="ledger__row"><span class="k">Creation fee</span><span class="v">10 coins</span></div>
+          <div class="ledger__row"><span class="k">Coin rate</span><span class="v">1 coin = 10p</span></div>
+        </div>
+        <div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 9v4M12 17v.01M10.3 3.9l-8 14A2 2 0 004 21h16a2 2 0 001.7-3l-8-14a2 2 0 00-3.4 0z"/></svg>
+          <p><b>18+ only, and closed-loop.</b> Money that goes into a brand wallet is spent on Boadman and cannot be cashed out. Fund only what you intend to spend on the play.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLY / JOURNEY -->
+  <section class="sec wrap" id="apply">
+    <div class="sec__head"><div><div class="sec__kick"><i></i><span>Getting started</span></div><h2 class="sec__title" data-scramble>A vetted door, on purpose</h2></div></div>
+    <div class="duo" data-stagger>
+      <div class="panel">
+        <div class="panel__k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12l6 6L20 6"/></svg><span>The path to approved</span></div>
+        <ol class="journey">
+          <li><span><b>Sign up</b> and create your account</span></li>
+          <li><span><b>Verify your email</b></span></li>
+          <li><span><b>Add company details</b></span></li>
+          <li><span><b>Declare your directors and beneficial owners</b></span></li>
+          <li><span><b>Pass business verification</b></span></li>
+          <li><span><b>Approved</b>, and ready to fund</span></li>
+        </ol>
+      </div>
+      <div class="panel" style="display:flex;flex-direction:column;justify-content:center">
+        <h3>Approval is a human decision</h3>
+        <p>Nothing is auto-approved. That is the same fact as selling point four: everyone on the platform beside you was checked, and checking is why onboarding takes a moment.</p>
+        <a class="btn btn--ember" href="/signup-brand" data-cursor data-sfx="coin" style="margin-top:1.5rem;align-self:flex-start">Apply to host<span class="btn__ar" aria-hidden="true">→→</span></a>
+        <p class="rate-note">Route: /signup-brand · 18+ · vetted onboarding</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU GET AFTER -->
+  <section class="sec wrap">
+    <div class="sec__head"><div><div class="sec__kick"><i></i><span>After it runs</span></div><h2 class="sec__title" data-scramble>What you walk away with</h2></div></div>
+    <div class="trio" data-stagger>
+      <div class="panel"><div class="panel__k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg><span>The ledger</span></div><p>The complete financial record of the competition, every coin referenced and typed.</p></div>
+      <div class="panel"><div class="panel__k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg><span>A public page</span></div><p>The competition's own public page, live for everyone who played and everyone who watched.</p></div>
+      <div class="panel"><div class="panel__k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span>Your history</span></div><p>Everything you have hosted, with status and entrant counts, in one place.</p></div>
+    </div>
+    <p class="rate-note">No reach, no impressions, no audience demographics, no exportable campaign reports. The auditable record is the honest story, and the stronger one.</p>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta wrap">
+    <div class="cta__box layered bracket" data-reveal>
+      <span class="br tl" aria-hidden="true"></span><span class="br br2" aria-hidden="true"></span>
+      <div class="cta__l"><h2><span class="w1">PUT YOUR MONEY</span> <span class="w3">ON THE PLAY.</span></h2><p>Fund the competition, not the middle. Apply to host.</p></div>
+      <div class="cta__r"><a class="btn btn--ember" href="/signup-brand" data-cursor data-sfx="coin">Apply<span class="btn__ar" aria-hidden="true">→→</span></a><span class="cta__note">18+ only · closed-loop · terms &amp; conditions apply</span></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div class="foot__brand"><img src="boadman-logo.svg" alt="Boadman" />
+        <p>Fund competitions, not impressions. Every coin escrowed, every coin on the record.</p>
+        <div class="resp">Only stake what you can afford to lose.</div></div>
+      <div class="foot__col"><h4>Platform</h4><a href="index.html#tournaments">Tournaments</a><a href="for-brands.html">For brands</a><a href="for-publishers.html">For publishers</a><a href="index.html#faq">FAQ</a></div>
+      <div class="foot__col"><h4>Brands</h4><a href="#pillars">Why it works</a><a href="#numbers">The numbers</a><a href="#apply">Apply</a><a href="/signup-brand">Sign up to host</a></div>
+      <div class="foot__col"><h4>Legal</h4><a href="index.html">Terms of Service</a><a href="index.html">Privacy Policy</a><a href="index.html">Responsible play</a></div>
+    </div>
+    <div class="foot__bar"><span>© 2026 Boadman Ltd · <span class="v">18+ only</span></span><span class="v">Brand wallets are closed-loop · rates read live from config</span></div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" integrity="sha384-O55L/6rhHr9CFvrxqv5luxOCcmVaBmETbZbJDP+Do8T0pztTACsFBD/IXCNkj7DV" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="assets/arena.js"></script>
+</body>
+</html>

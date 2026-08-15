@@ -4,6 +4,31 @@ Generate each image below, name it **exactly** as the `File` line says, and drop
 `images/` folder next to `index.html`. The page already references these paths and shows a
 HUD placeholder until the real file exists, so you can add them one at a time.
 
+## Brands & Publishers pages (added 2026-08-14)
+
+Same global art direction below. **No game titles, no game artwork, no real logos or company names**
+(house rule). Genre and abstract concepts only. Each `<img>` has an `onerror` fallback, so the page
+works before these exist. Absolute `og:image` URLs already point at `images/og-brands.png` and
+`images/og-publishers.png` on the deployed origin.
+
+- **File:** `images/brands-hero.png` · 4:5-to-16:9 hero, ≥ 1600 × 1200 px. Also reused as the mid-page
+  band and the landing "For brands" teaser wash, so keep it strong on the right, darker on the left.
+  - **Prompt:** [Global art direction] + A brand's money becoming a glowing prize pool: stacks of
+    abstract coral-lit coins/energy pouring into a bright escrowed vault or arena podium, a sponsor's
+    empty banner space (blank, no logo) lit by ember light, boardroom-meets-arena mood. Confident,
+    premium, financial-grade. Left third falls to near-black for a headline. No text, no logos.
+- **File:** `images/publishers-hero.png` · same sizing. Reused as band + landing "For publishers" wash.
+  - **Prompt:** [Global art direction] + A studio's catalogue as glowing abstract genre tiles
+    (shooter, strategy, racing, fighting, chess) floating in a dark server-room / arcade hall, a
+    single prominent kill-switch lever throwing coral light, sense of many competitions running on
+    one platform. No recognisable game characters, no real titles, no logos. Left third darker for text.
+- **File:** `images/og-brands.png` · exactly 1200 × 630 px.
+  - **Prompt:** [Global art direction] + Wide cinematic banner: coral coins flowing into a bright
+    prize vault on the right, deep black on the left two-thirds for a headline. Premium, poster-like. No text.
+- **File:** `images/og-publishers.png` · exactly 1200 × 630 px.
+  - **Prompt:** [Global art direction] + Wide cinematic banner: abstract genre tiles and a glowing
+    kill-switch lever on the right, deep black on the left two-thirds for a headline. No text, no logos.
+
 ## Global art direction (paste into every prompt)
 > Dark cyber-military esports key art. Near-black arena background (#0A0A0C). Rim and volumetric
 > lighting in ember tones: coral-red (#FF3D1F), orange (#FF8A00), deep amber. Cinematic, high
