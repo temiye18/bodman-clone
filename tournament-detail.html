@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Continental Clash · Boadman</title>
+<meta name="description" content="Continental Clash — a Rocket Fury tournament on Boadman. Prize pool, schedule, prize breakdown and roster.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira:wght@400;500;600;700;800;900&family=Chakra+Petch:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<div class="app">
+
+  <aside class="rail" id="rail">
+    <a class="rail__logo" href="index.html" aria-label="Boadman home"><img src="boadman-logo.svg" alt="Boadman"></a>
+    <nav class="rail__nav" aria-label="Primary">
+      <div class="rail__grp">Play</div>
+      <a class="navi" href="dashboard.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Dashboard</a>
+      <a class="navi" href="tournaments.html" aria-current="page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 3h12v4a6 6 0 0 1-12 0V3Z"/><path d="M9 15v3h6v-3M8 21h8M4 5h2M18 5h2"/></svg>
+        Tournaments</a>
+      <a class="navi" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 12h4l2-6 4 12 2-6h4"/></svg>
+        Challenges <span class="badge">2</span></a>
+      <a class="navi" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="6" width="20" height="12" rx="3"/><path d="M7 12h3M8.5 10.5v3M15 11h.01M18 13h.01"/></svg>
+        Games</a>
+      <div class="rail__grp">Account</div>
+      <a class="navi" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="6" width="18" height="13" rx="2.5"/><path d="M3 10h18M16 14h2"/></svg>
+        Wallet</a>
+      <a class="navi" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+        Profile</a>
+      <a class="navi" href="index.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M15 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h9M10 12h11m0 0-3-3m3 3-3 3"/></svg>
+        Sign out</a>
+    </nav>
+    <div class="rail__wallet">
+      <div class="lbl"><span>Balance</span><span class="hud coral">Vault</span></div>
+      <div class="amt"><span data-count="2680" class="mono">0</span><b>Coins</b></div>
+      <div class="gbp">£268.00 spendable</div>
+      <div class="hold"><span>On hold</span><b class="mono">340 coins</b></div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="head">
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <label class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="search" placeholder="Search tournaments, games, players…" aria-label="Search">
+        <kbd>/</kbd>
+      </label>
+      <div class="head__r">
+        <button class="iconbtn" aria-label="Notifications, unread"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="ndot"></span></button>
+        <button class="avatar"><span class="av">S</span><span class="nm">seyispecial18</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      </div>
+    </header>
+
+    <main class="page">
+
+      <!-- breadcrumb -->
+      <nav class="crumb" aria-label="Breadcrumb">
+        <a href="tournaments.html">Tournaments</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+        <a href="tournaments.html">Rocket Fury</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+        <span class="cur">Continental Clash</span>
+      </nav>
+
+      <!-- hero -->
+      <section class="dhero" data-reveal>
+        <div class="dhero__bg">
+          <img src="images/detail-continental-clash.png" alt="" onerror="this.onerror=null;this.src='images/tournament-fighting.png'">
+          <div class="fill"></div>
+        </div>
+        <div class="dhero__scrim"></div>
+        <div class="dhero__in">
+          <div class="dhero__badges">
+            <span class="chip chip--open">Registration open</span>
+            <span class="chip chip--info">Rocket Fury</span>
+            <span class="chip chip--done">Brand-hosted</span>
+          </div>
+          <h1>Continental Clash</h1>
+          <p class="dhero__sub">The season's flagship bracket. 256 seats, single elimination, best-of-three from the quarter-finals.</p>
+          <div class="dhero__host">Hosted by <b>Hyperdrive Labs</b></div>
+          <div class="dhero__cta">
+            <a class="btn btn--primary" href="#" data-demo-load>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>Join · 2,500 coins</a>
+            <a class="btn btn--ghost" href="#">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>Sponsor the pool</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- schedule strip -->
+      <div class="strip s3" data-reveal>
+        <div>
+          <span class="k">Registration closes</span>
+          <span class="v mono" data-countdown="47:59:00" data-expired="Registration closed">—</span>
+          <span class="foot">Sat 23 Aug · 18:00 BST</span>
+        </div>
+        <div>
+          <span class="k">Tournament starts</span>
+          <span class="v">Sat 23 Aug</span>
+          <span class="foot">19:00 BST · check-in opens 30m prior</span>
+        </div>
+        <div>
+          <span class="k">Expected finish</span>
+          <span class="v">Sun 24 Aug</span>
+          <span class="foot">~22:00 BST · prizes enter 48h hold</span>
+        </div>
+      </div>
+
+      <!-- key numbers -->
+      <div class="strip s4" data-reveal>
+        <div>
+          <span class="k">Prize pool</span>
+          <span class="v mono" style="color:var(--coral)"><span data-count="1240000">0</span></span>
+          <span class="foot">coins · grows with sponsors</span>
+        </div>
+        <div>
+          <span class="k">Guaranteed</span>
+          <span class="v mono">1,000,000</span>
+          <span class="foot">coins · put up by the host</span>
+        </div>
+        <div>
+          <span class="k">Entry fee</span>
+          <span class="v mono">2,500</span>
+          <span class="foot">coins · charged on top, not from pool</span>
+        </div>
+        <div>
+          <span class="k">Players</span>
+          <span class="v mono">128 / 256</span>
+          <span class="foot">128 seats remaining</span>
+        </div>
+      </div>
+
+      <!-- two column: prize breakdown + sponsors -->
+      <div class="detail-2" data-reveal>
+        <div>
+          <div class="sec__h"><h2>Prize breakdown</h2><span class="count mono">Top 8 paid</span></div>
+          <div class="panel panel--pad">
+            <div class="pbreak">
+              <div class="pbreak__row"><span class="pbreak__rk g1">1</span><span class="pbreak__amt mono">496,000 <small>coins</small></span><span class="pbreak__pct mono">40%</span></div>
+              <div class="pbreak__row"><span class="pbreak__rk g2">2</span><span class="pbreak__amt mono">248,000 <small>coins</small></span><span class="pbreak__pct mono">20%</span></div>
+              <div class="pbreak__row"><span class="pbreak__rk g3">3</span><span class="pbreak__amt mono">148,800 <small>coins</small></span><span class="pbreak__pct mono">12%</span></div>
+              <div class="pbreak__row"><span class="pbreak__rk">4</span><span class="pbreak__amt mono">99,200 <small>coins</small></span><span class="pbreak__pct mono">8%</span></div>
+              <div class="pbreak__row"><span class="pbreak__rk">5–8</span><span class="pbreak__amt mono">62,000 <small>coins each</small></span><span class="pbreak__pct mono">5% each</span></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="sec__h"><h2>Public sponsors</h2><span class="count mono">240,000 added</span></div>
+          <div class="panel panel--pad">
+            <div class="ledger">
+              <div class="ledger__row">
+                <div class="ledger__ic pos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></div>
+                <div class="ledger__t"><div class="nm">Hyperdrive Labs</div><div class="dt">Host guarantee</div></div>
+                <div class="ledger__amt pos mono">+1,000,000</div>
+              </div>
+              <div class="ledger__row">
+                <div class="ledger__ic pos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></div>
+                <div class="ledger__t"><div class="nm">apexghost</div><div class="dt">Sponsor · 2 days ago</div></div>
+                <div class="ledger__amt pos mono">+150,000</div>
+              </div>
+              <div class="ledger__row">
+                <div class="ledger__ic pos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></div>
+                <div class="ledger__t"><div class="nm">Nightfall Studios</div><div class="dt">Sponsor · 3 days ago</div></div>
+                <div class="ledger__amt pos mono">+90,000</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- roster -->
+      <section class="sec" data-reveal>
+        <div class="sec__h"><h2>Roster</h2><span class="count mono">128 entered · 256 seats</span></div>
+        <div class="panel panel--pad">
+          <div class="roster">
+            <div class="rost"><span class="av" style="background:linear-gradient(140deg,#FFA700,#FF3D1F);color:#2a0d05">A</span><span class="nm">apexghost</span></div>
+            <div class="rost"><span class="av" style="background:linear-gradient(140deg,#5B8DEF,#A78BFA)">V</span><span class="nm">vantablack_</span></div>
+            <div class="rost"><span class="av" style="background:linear-gradient(140deg,#34E39B,#5B8DEF)">M</span><span class="nm">midnight_owl</span></div>
+            <div class="rost"><span class="av" style="background:linear-gradient(140deg,#F5B53D,#FF6038);color:#2a0d05">S</span><span class="nm">seyispecial18</span></div>
+            <div class="rost"><span class="av" style="background:linear-gradient(140deg,#FF6038,#C7301A)">K</span><span class="nm">kilo_nine</span></div>
+            <div class="rost"><span class="av" style="background:linear-gradient(140deg,#A78BFA,#5B8DEF)">Z</span><span class="nm">zerocool</span></div>
+            <div class="rost"><span class="av" style="background:linear-gradient(140deg,#34E39B,#0f9d6b)">R</span><span class="nm">rift_walker</span></div>
+            <div class="rost empty"><span class="av">+</span><span class="nm">120 more</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- podium (empty places before it's over) -->
+      <section class="sec" data-reveal>
+        <div class="sec__h"><h2>Podium</h2><span class="count mono">Decided when it ends</span></div>
+        <div class="podium">
+          <div class="pod p2">
+            <div class="rk">Runner-up</div>
+            <div class="av"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div>
+            <div class="nm">Awaiting result</div>
+            <div class="amt mono">248,000 <small style="color:var(--muted);font-weight:500">coins</small></div>
+          </div>
+          <div class="pod p1">
+            <div class="rk">Champion</div>
+            <div class="av"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M6 3h12v4a6 6 0 0 1-12 0V3ZM9 15v3h6v-3"/></svg></div>
+            <div class="nm">Awaiting result</div>
+            <div class="amt mono">496,000 <small style="color:var(--muted);font-weight:500">coins</small></div>
+          </div>
+          <div class="pod p3">
+            <div class="rk">Third</div>
+            <div class="av"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div>
+            <div class="nm">Awaiting result</div>
+            <div class="amt mono">148,800 <small style="color:var(--muted);font-weight:500">coins</small></div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+<script src="assets/app.js"></script>
+</body>
+</html>

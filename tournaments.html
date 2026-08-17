@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tournaments · Boadman</title>
+<meta name="description" content="Find a competition to enter. Filter by game, status, entry fee — every view is a shareable link.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira:wght@400;500;600;700;800;900&family=Chakra+Petch:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<div class="app">
+
+  <aside class="rail" id="rail">
+    <a class="rail__logo" href="index.html" aria-label="Boadman home"><img src="boadman-logo.svg" alt="Boadman"></a>
+    <nav class="rail__nav" aria-label="Primary">
+      <div class="rail__grp">Play</div>
+      <a class="navi" href="dashboard.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Dashboard</a>
+      <a class="navi" href="tournaments.html" aria-current="page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 3h12v4a6 6 0 0 1-12 0V3Z"/><path d="M9 15v3h6v-3M8 21h8M4 5h2M18 5h2"/></svg>
+        Tournaments</a>
+      <a class="navi" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 12h4l2-6 4 12 2-6h4"/></svg>
+        Challenges <span class="badge">2</span></a>
+      <a class="navi" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="6" width="20" height="12" rx="3"/><path d="M7 12h3M8.5 10.5v3M15 11h.01M18 13h.01"/></svg>
+        Games</a>
+      <div class="rail__grp">Account</div>
+      <a class="navi" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="6" width="18" height="13" rx="2.5"/><path d="M3 10h18M16 14h2"/></svg>
+        Wallet</a>
+      <a class="navi" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+        Profile</a>
+      <a class="navi" href="index.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M15 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h9M10 12h11m0 0-3-3m3 3-3 3"/></svg>
+        Sign out</a>
+    </nav>
+    <div class="rail__wallet">
+      <div class="lbl"><span>Balance</span><span class="hud coral">Vault</span></div>
+      <div class="amt"><span data-count="2680" class="mono">0</span><b>Coins</b></div>
+      <div class="gbp">£268.00 spendable</div>
+      <div class="hold"><span>On hold</span><b class="mono">340 coins</b></div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="head">
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <label class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="search" placeholder="Search tournaments, games, players…" aria-label="Search">
+        <kbd>/</kbd>
+      </label>
+      <div class="head__r">
+        <button class="iconbtn" aria-label="Notifications, unread"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="ndot"></span></button>
+        <button class="avatar"><span class="av">S</span><span class="nm">seyispecial18</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+      </div>
+    </header>
+
+    <main class="page">
+
+      <!-- hero -->
+      <section class="thero" data-reveal>
+        <div>
+          <div class="thero__k mono">Tournaments hub</div>
+          <h1>Find your next arena</h1>
+          <p>Open competitions across every registered title. Filter, sort, and share any view — the whole board lives in the link.</p>
+        </div>
+        <div class="thero__cta">
+          <a class="btn btn--primary" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>Host a tournament</a>
+          <a class="btn btn--ghost" href="#" style="margin-left:.6rem">See your own</a>
+        </div>
+      </section>
+
+      <!-- filters -->
+      <div class="filters" data-reveal>
+        <div class="filterrow" data-filter="single" role="group" aria-label="Filter by game">
+          <button class="pill" aria-pressed="true">All games</button>
+          <button class="pill" aria-pressed="false">Rocket Fury</button>
+          <button class="pill" aria-pressed="false">Neon Circuit</button>
+          <button class="pill" aria-pressed="false">Iron Vanguard</button>
+          <button class="pill" aria-pressed="false">Shadow Protocol</button>
+        </div>
+        <div class="filterrow" data-filter="multi" role="group" aria-label="Filter by status">
+          <button class="pill pill--ghost" aria-pressed="true">Open</button>
+          <button class="pill pill--ghost" aria-pressed="false">Live now</button>
+          <button class="pill pill--ghost" aria-pressed="false">Brand-hosted</button>
+          <button class="pill pill--ghost" aria-pressed="false">Joinable for me</button>
+          <span class="spacer"></span>
+          <div class="selm">
+            <button class="selm__btn"><b>Entry</b><span class="selm__val">Any</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg></button>
+            <div class="selm__menu" role="listbox">
+              <button role="option" aria-selected="true" data-label="Any">Any entry</button>
+              <button role="option" aria-selected="false" data-label="Free">Free only</button>
+              <button role="option" aria-selected="false" data-label="Under 500">Under 500 coins</button>
+              <button role="option" aria-selected="false" data-label="500+">500 coins and up</button>
+            </div>
+          </div>
+          <div class="selm">
+            <button class="selm__btn"><b>Sort</b><span class="selm__val">Prize pool</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg></button>
+            <div class="selm__menu" role="listbox">
+              <button role="option" aria-selected="true" data-label="Prize pool">Biggest prize pool</button>
+              <button role="option" aria-selected="false" data-label="Closing soon">Closing soon</button>
+              <button role="option" aria-selected="false" data-label="Newest">Newest</button>
+              <button role="option" aria-selected="false" data-label="Filling up">Filling up</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- card grid -->
+      <div class="tgrid" data-reveal>
+
+        <!-- huge prize, capped, real art -->
+        <article class="tcard">
+          <div class="tcard__media">
+            <img class="tcard__img" src="images/cover-rocket-fury.png" alt="" onerror="this.onerror=null;this.src='images/tournament-fighting.png'">
+            <span class="tcard__state"><span class="chip chip--open">Open</span></span>
+            <span class="tcard__genre mono">Rocket Fury</span>
+          </div>
+          <div class="tcard__body">
+            <h3>Continental Clash</h3>
+            <div class="tcard__host">Brand-hosted · <b>Hyperdrive Labs</b></div>
+            <div class="tcard__stats">
+              <div class="tstat"><span class="k">Prize pool</span><span class="v hot mono">1,240,000</span></div>
+              <div class="tstat"><span class="k">Guaranteed</span><span class="v mono">1,000,000</span></div>
+              <div class="tstat"><span class="k">Entry</span><span class="v mono">2,500</span></div>
+              <div class="tstat"><span class="k">Players</span><span class="v mono">128/256</span></div>
+            </div>
+          </div>
+          <div class="tcard__foot"><a class="btn btn--primary" href="tournament-detail.html">View &amp; join</a></div>
+        </article>
+
+        <!-- free entry, uncapped -->
+        <article class="tcard">
+          <div class="tcard__media">
+            <div class="tcard__fill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 3h12v4a6 6 0 0 1-12 0V3Z"/><path d="M9 15v3h6v-3M8 21h8M4 5h2M18 5h2"/></svg>
+            </div>
+            <img class="tcard__img" src="images/cover-iron-vanguard.png" alt="" onerror="this.remove()">
+            <span class="tcard__state"><span class="chip chip--open">Open</span></span>
+            <span class="tcard__genre mono">Iron Vanguard</span>
+          </div>
+          <div class="tcard__body">
+            <h3>Vanguard Open Series</h3>
+            <div class="tcard__host">Boadman · <b>Community</b></div>
+            <div class="tcard__stats">
+              <div class="tstat"><span class="k">Prize pool</span><span class="v hot mono">45,000</span></div>
+              <div class="tstat"><span class="k">Guaranteed</span><span class="v mono">45,000</span></div>
+              <div class="tstat"><span class="k">Entry</span><span class="v free">Free</span></div>
+              <div class="tstat"><span class="k">Players</span><span class="v mono">30/∞</span></div>
+            </div>
+          </div>
+          <div class="tcard__foot"><a class="btn btn--primary" href="tournament-detail.html">View &amp; join</a></div>
+        </article>
+
+        <!-- live -->
+        <article class="tcard">
+          <div class="tcard__media">
+            <img class="tcard__img" src="images/cover-neon-circuit.png" alt="" onerror="this.onerror=null;this.src='images/tournament-racing.png'">
+            <span class="tcard__state"><span class="chip chip--live"><span class="livebars" aria-hidden="true"><i></i><i></i><i></i></span>Live</span></span>
+            <span class="tcard__genre mono">Neon Circuit</span>
+          </div>
+          <div class="tcard__body">
+            <h3>Grand Prix Qualifier</h3>
+            <div class="tcard__host">Player-hosted · <b>apexghost</b></div>
+            <div class="tcard__stats">
+              <div class="tstat"><span class="k">Prize pool</span><span class="v hot mono">88,000</span></div>
+              <div class="tstat"><span class="k">Guaranteed</span><span class="v mono">50,000</span></div>
+              <div class="tstat"><span class="k">Entry</span><span class="v mono">750</span></div>
+              <div class="tstat"><span class="k">Players</span><span class="v mono">64/128</span></div>
+            </div>
+          </div>
+          <div class="tcard__foot"><a class="btn btn--ghost" href="tournament-detail.html">Spectate</a></div>
+        </article>
+
+        <!-- starting soon -->
+        <article class="tcard">
+          <div class="tcard__media">
+            <img class="tcard__img" src="images/cover-shadow-protocol.png" alt="" onerror="this.onerror=null;this.src='images/tournament-shooter.png'">
+            <span class="tcard__state"><span class="chip chip--soon">Starting soon</span></span>
+            <span class="tcard__genre mono">Shadow Protocol</span>
+          </div>
+          <div class="tcard__body">
+            <h3>Blackout Championship</h3>
+            <div class="tcard__host">Brand-hosted · <b>Nightfall Studios</b></div>
+            <div class="tcard__stats">
+              <div class="tstat"><span class="k">Prize pool</span><span class="v hot mono">210,000</span></div>
+              <div class="tstat"><span class="k">Guaranteed</span><span class="v mono">200,000</span></div>
+              <div class="tstat"><span class="k">Entry</span><span class="v mono">1,000</span></div>
+              <div class="tstat"><span class="k">Players</span><span class="v mono">96/96</span></div>
+            </div>
+          </div>
+          <div class="tcard__foot"><a class="btn btn--soft" href="tournament-detail.html" aria-disabled="true" style="pointer-events:none;flex:1;text-align:center">Registration full</a></div>
+        </article>
+
+        <!-- small player-hosted, no art -->
+        <article class="tcard">
+          <div class="tcard__media">
+            <div class="tcard__fill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 3h12v4a6 6 0 0 1-12 0V3Z"/><path d="M9 15v3h6v-3M8 21h8M4 5h2M18 5h2"/></svg>
+            </div>
+            <span class="tcard__state"><span class="chip chip--open">Open</span></span>
+            <span class="tcard__genre mono">Rocket Fury</span>
+          </div>
+          <div class="tcard__body">
+            <h3>Sunday Rumble</h3>
+            <div class="tcard__host">Player-hosted · <b>midnight_owl</b></div>
+            <div class="tcard__stats">
+              <div class="tstat"><span class="k">Prize pool</span><span class="v hot mono">3,200</span></div>
+              <div class="tstat"><span class="k">Guaranteed</span><span class="v mono">2,000</span></div>
+              <div class="tstat"><span class="k">Entry</span><span class="v mono">200</span></div>
+              <div class="tstat"><span class="k">Players</span><span class="v mono">12/32</span></div>
+            </div>
+          </div>
+          <div class="tcard__foot"><a class="btn btn--primary" href="tournament-detail.html">View &amp; join</a></div>
+        </article>
+
+        <!-- open, mid -->
+        <article class="tcard">
+          <div class="tcard__media">
+            <img class="tcard__img" src="images/cover-neon-circuit.png" alt="" onerror="this.onerror=null;this.src='images/tournament-racing.png'">
+            <span class="tcard__state"><span class="chip chip--open">Open</span></span>
+            <span class="tcard__genre mono">Neon Circuit</span>
+          </div>
+          <div class="tcard__body">
+            <h3>Friday Night Sprint</h3>
+            <div class="tcard__host">Player-hosted · <b>seyispecial18</b></div>
+            <div class="tcard__stats">
+              <div class="tstat"><span class="k">Prize pool</span><span class="v hot mono">6,000</span></div>
+              <div class="tstat"><span class="k">Guaranteed</span><span class="v mono">5,000</span></div>
+              <div class="tstat"><span class="k">Entry</span><span class="v mono">300</span></div>
+              <div class="tstat"><span class="k">Players</span><span class="v mono">18/64</span></div>
+            </div>
+          </div>
+          <div class="tcard__foot"><a class="btn btn--ghost" href="tournament-detail.html">Manage</a></div>
+        </article>
+
+      </div>
+
+      <div class="loadmore"><button class="btn btn--ghost" data-demo-load>Load more tournaments</button></div>
+
+    </main>
+  </div>
+</div>
+<script src="assets/app.js"></script>
+</body>
+</html>
