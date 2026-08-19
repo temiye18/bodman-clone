@@ -76,7 +76,7 @@
         <span class="cur">Continental Clash</span>
       </nav>
 
-      <!-- hero -->
+      <!-- hero: identity band (actions live in the stake console) -->
       <section class="dhero" data-reveal>
         <div class="dhero__bg">
           <img src="images/detail-continental-clash.png" alt="" onerror="this.onerror=null;this.src='images/tournament-fighting.png'">
@@ -92,137 +92,155 @@
           <h1>Continental Clash</h1>
           <p class="dhero__sub">The season's flagship bracket. 256 seats, single elimination, best-of-three from the quarter-finals.</p>
           <div class="dhero__host">Hosted by <b>Hyperdrive Labs</b></div>
-          <div class="dhero__cta">
+        </div>
+      </section>
+
+      <!-- command dossier: sticky stake console + scrolling detail -->
+      <div class="dpage">
+
+        <aside class="stake" data-reveal>
+          <div class="stake__state">
+            <span class="chip chip--open">Registration open</span>
+            <span class="live-note">128 seats left</span>
+          </div>
+          <div class="stake__pool">
+            <span class="k">Prize pool</span>
+            <div class="v"><span class="mono" data-count="1240000">0</span><small>coins</small></div>
+            <div class="note">Grows with every sponsor</div>
+          </div>
+          <div class="stake__seats">
+            <div class="row"><span>Entrants</span><span><b>128</b> / 256</span></div>
+            <div class="progress"><div class="progress__fill" style="width:50%"></div></div>
+            <div class="foot">128 seats remaining</div>
+          </div>
+          <div class="stake__ledger">
+            <div class="lg"><span class="k">Guaranteed</span><span class="v mono">1,000,000<small>coins</small></span></div>
+            <div class="lg"><span class="k">Entry fee</span><span class="v mono">2,500<small>coins</small></span></div>
+          </div>
+          <div class="stake__cd">
+            <span class="k">Registration closes in</span>
+            <div class="v mono" data-countdown="47:59:00" data-expired="Registration closed">—</div>
+          </div>
+          <div class="stake__cta">
             <a class="btn btn--primary" href="#" data-demo-load>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>Join · 2,500 coins</a>
-            <a class="btn btn--ghost" href="#">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>Sponsor the pool</a>
+            <a class="btn btn--ghost" href="#">Sponsor the pool</a>
           </div>
-        </div>
-      </section>
+          <p class="stake__fine">Entry is charged on top of your stake, never from the prize pool. Prizes enter a 48-hour hold after the final.</p>
+        </aside>
 
-      <!-- schedule strip -->
-      <div class="strip s3" data-reveal>
-        <div>
-          <span class="k">Registration closes</span>
-          <span class="v mono" data-countdown="47:59:00" data-expired="Registration closed">—</span>
-          <span class="foot">Sat 23 Aug · 18:00 BST</span>
-        </div>
-        <div>
-          <span class="k">Tournament starts</span>
-          <span class="v">Sat 23 Aug</span>
-          <span class="foot">19:00 BST · check-in opens 30m prior</span>
-        </div>
-        <div>
-          <span class="k">Expected finish</span>
-          <span class="v">Sun 24 Aug</span>
-          <span class="foot">~22:00 BST · prizes enter 48h hold</span>
-        </div>
-      </div>
+        <div class="dossier">
 
-      <!-- key numbers -->
-      <div class="strip s4" data-reveal>
-        <div>
-          <span class="k">Prize pool</span>
-          <span class="v mono" style="color:var(--coral)"><span data-count="1240000">0</span></span>
-          <span class="foot">coins · grows with sponsors</span>
-        </div>
-        <div>
-          <span class="k">Guaranteed</span>
-          <span class="v mono">1,000,000</span>
-          <span class="foot">coins · put up by the host</span>
-        </div>
-        <div>
-          <span class="k">Entry fee</span>
-          <span class="v mono">2,500</span>
-          <span class="foot">coins · charged on top, not from pool</span>
-        </div>
-        <div>
-          <span class="k">Players</span>
-          <span class="v mono">128 / 256</span>
-          <span class="foot">128 seats remaining</span>
-        </div>
-      </div>
+          <!-- schedule as a vertical timeline -->
+          <section data-reveal>
+            <div class="sec__h"><h2>Schedule</h2><span class="count mono">All times BST</span></div>
+            <ol class="timeline">
+              <li class="tl now">
+                <span class="tl__node"></span>
+                <span class="k">Registration closes</span>
+                <span class="v">Sat 23 Aug, 18:00</span>
+                <span class="foot">In <span class="mono" data-countdown="47:59:00" data-expired="Closed">—</span></span>
+              </li>
+              <li class="tl next">
+                <span class="tl__node"></span>
+                <span class="k">Tournament starts</span>
+                <span class="v">Sat 23 Aug, 19:00</span>
+                <span class="foot">Check-in opens 30 min prior</span>
+              </li>
+              <li class="tl next">
+                <span class="tl__node"></span>
+                <span class="k">Expected finish</span>
+                <span class="v">Sun 24 Aug, ~22:00</span>
+                <span class="foot">Prizes enter their 48-hour hold</span>
+              </li>
+            </ol>
+          </section>
 
-      <!-- two column: prize breakdown + sponsors -->
-      <div class="detail-2" data-reveal>
-        <div>
-          <div class="sec__h"><h2>Prize breakdown</h2><span class="count mono">Top 8 paid</span></div>
-          <div class="panel panel--pad">
-            <div class="pbreak">
-              <div class="pbreak__row"><span class="pbreak__rk g1">1</span><span class="pbreak__amt mono">496,000 <small>coins</small></span><span class="pbreak__pct mono">40%</span></div>
-              <div class="pbreak__row"><span class="pbreak__rk g2">2</span><span class="pbreak__amt mono">248,000 <small>coins</small></span><span class="pbreak__pct mono">20%</span></div>
-              <div class="pbreak__row"><span class="pbreak__rk g3">3</span><span class="pbreak__amt mono">148,800 <small>coins</small></span><span class="pbreak__pct mono">12%</span></div>
-              <div class="pbreak__row"><span class="pbreak__rk">4</span><span class="pbreak__amt mono">99,200 <small>coins</small></span><span class="pbreak__pct mono">8%</span></div>
-              <div class="pbreak__row"><span class="pbreak__rk">5–8</span><span class="pbreak__amt mono">62,000 <small>coins each</small></span><span class="pbreak__pct mono">5% each</span></div>
+          <!-- prize breakdown with distribution bar -->
+          <section data-reveal>
+            <div class="sec__h"><h2>Prize breakdown</h2><span class="count mono">Top 8 paid</span></div>
+            <div class="distbar" role="img" aria-label="Pot split: 1st 40%, 2nd 20%, 3rd 12%, 4th 8%, 5th to 8th 20%">
+              <i class="g1" style="flex:40"></i><i class="g2" style="flex:20"></i><i class="g3" style="flex:12"></i><i class="g4" style="flex:8"></i><i class="rest" style="flex:20"></i>
             </div>
-          </div>
-        </div>
-        <div>
-          <div class="sec__h"><h2>Public sponsors</h2><span class="count mono">240,000 added</span></div>
-          <div class="panel panel--pad">
-            <div class="ledger">
-              <div class="ledger__row">
-                <div class="ledger__ic pos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></div>
-                <div class="ledger__t"><div class="nm">Hyperdrive Labs</div><div class="dt">Host guarantee</div></div>
-                <div class="ledger__amt pos mono">+1,000,000</div>
-              </div>
-              <div class="ledger__row">
-                <div class="ledger__ic pos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></div>
-                <div class="ledger__t"><div class="nm">apexghost</div><div class="dt">Sponsor · 2 days ago</div></div>
-                <div class="ledger__amt pos mono">+150,000</div>
-              </div>
-              <div class="ledger__row">
-                <div class="ledger__ic pos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></div>
-                <div class="ledger__t"><div class="nm">Nightfall Studios</div><div class="dt">Sponsor · 3 days ago</div></div>
-                <div class="ledger__amt pos mono">+90,000</div>
+            <div class="panel panel--pad">
+              <div class="pbreak">
+                <div class="pbreak__row"><span class="pbreak__rk g1">1</span><span class="pbreak__amt mono">496,000 <small>coins</small></span><span class="pbreak__pct mono">40%</span></div>
+                <div class="pbreak__row"><span class="pbreak__rk g2">2</span><span class="pbreak__amt mono">248,000 <small>coins</small></span><span class="pbreak__pct mono">20%</span></div>
+                <div class="pbreak__row"><span class="pbreak__rk g3">3</span><span class="pbreak__amt mono">148,800 <small>coins</small></span><span class="pbreak__pct mono">12%</span></div>
+                <div class="pbreak__row"><span class="pbreak__rk g4">4</span><span class="pbreak__amt mono">99,200 <small>coins</small></span><span class="pbreak__pct mono">8%</span></div>
+                <div class="pbreak__row"><span class="pbreak__rk">5–8</span><span class="pbreak__amt mono">62,000 <small>coins each</small></span><span class="pbreak__pct mono">5% each</span></div>
               </div>
             </div>
-          </div>
+          </section>
+
+          <!-- public sponsors -->
+          <section data-reveal>
+            <div class="sec__h"><h2>Public sponsors</h2><span class="count mono">240,000 added</span></div>
+            <div class="panel panel--pad">
+              <div class="ledger">
+                <div class="ledger__row">
+                  <div class="ledger__ic pos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></div>
+                  <div class="ledger__t"><div class="nm">Hyperdrive Labs</div><div class="dt">Host guarantee</div></div>
+                  <div class="ledger__amt pos mono">+1,000,000</div>
+                </div>
+                <div class="ledger__row">
+                  <div class="ledger__ic pos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></div>
+                  <div class="ledger__t"><div class="nm">apexghost</div><div class="dt">Sponsor · 2 days ago</div></div>
+                  <div class="ledger__amt pos mono">+150,000</div>
+                </div>
+                <div class="ledger__row">
+                  <div class="ledger__ic pos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></div>
+                  <div class="ledger__t"><div class="nm">Nightfall Studios</div><div class="dt">Sponsor · 3 days ago</div></div>
+                  <div class="ledger__amt pos mono">+90,000</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- roster -->
+          <section data-reveal>
+            <div class="sec__h"><h2>Roster</h2><span class="count mono">128 entered · 256 seats</span></div>
+            <div class="panel panel--pad">
+              <div class="roster">
+                <div class="rost"><span class="av" style="background:linear-gradient(140deg,#FFA700,#FF3D1F);color:#2a0d05">A</span><span class="nm">apexghost</span></div>
+                <div class="rost"><span class="av" style="background:linear-gradient(140deg,#5B8DEF,#A78BFA)">V</span><span class="nm">vantablack_</span></div>
+                <div class="rost"><span class="av" style="background:linear-gradient(140deg,#34E39B,#5B8DEF)">M</span><span class="nm">midnight_owl</span></div>
+                <div class="rost"><span class="av" style="background:linear-gradient(140deg,#F5B53D,#FF6038);color:#2a0d05">S</span><span class="nm">seyispecial18</span></div>
+                <div class="rost"><span class="av" style="background:linear-gradient(140deg,#FF6038,#C7301A)">K</span><span class="nm">kilo_nine</span></div>
+                <div class="rost"><span class="av" style="background:linear-gradient(140deg,#A78BFA,#5B8DEF)">Z</span><span class="nm">zerocool</span></div>
+                <div class="rost"><span class="av" style="background:linear-gradient(140deg,#34E39B,#0f9d6b)">R</span><span class="nm">rift_walker</span></div>
+                <div class="rost more"><span class="av">+</span><span class="nm">120 more</span></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- podium (empty places before it's over) -->
+          <section data-reveal>
+            <div class="sec__h"><h2>Podium</h2><span class="count mono">Decided when it ends</span></div>
+            <div class="podium">
+              <div class="pod p2">
+                <div class="rk">Runner-up</div>
+                <div class="av"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div>
+                <div class="nm">Awaiting result</div>
+                <div class="amt mono">248,000 <small style="color:var(--muted);font-weight:500">coins</small></div>
+              </div>
+              <div class="pod p1">
+                <div class="rk">Champion</div>
+                <div class="av"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M6 3h12v4a6 6 0 0 1-12 0V3ZM9 15v3h6v-3"/></svg></div>
+                <div class="nm">Awaiting result</div>
+                <div class="amt mono">496,000 <small style="color:var(--muted);font-weight:500">coins</small></div>
+              </div>
+              <div class="pod p3">
+                <div class="rk">Third</div>
+                <div class="av"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div>
+                <div class="nm">Awaiting result</div>
+                <div class="amt mono">148,800 <small style="color:var(--muted);font-weight:500">coins</small></div>
+              </div>
+            </div>
+          </section>
+
         </div>
       </div>
-
-      <!-- roster -->
-      <section class="sec" data-reveal>
-        <div class="sec__h"><h2>Roster</h2><span class="count mono">128 entered · 256 seats</span></div>
-        <div class="panel panel--pad">
-          <div class="roster">
-            <div class="rost"><span class="av" style="background:linear-gradient(140deg,#FFA700,#FF3D1F);color:#2a0d05">A</span><span class="nm">apexghost</span></div>
-            <div class="rost"><span class="av" style="background:linear-gradient(140deg,#5B8DEF,#A78BFA)">V</span><span class="nm">vantablack_</span></div>
-            <div class="rost"><span class="av" style="background:linear-gradient(140deg,#34E39B,#5B8DEF)">M</span><span class="nm">midnight_owl</span></div>
-            <div class="rost"><span class="av" style="background:linear-gradient(140deg,#F5B53D,#FF6038);color:#2a0d05">S</span><span class="nm">seyispecial18</span></div>
-            <div class="rost"><span class="av" style="background:linear-gradient(140deg,#FF6038,#C7301A)">K</span><span class="nm">kilo_nine</span></div>
-            <div class="rost"><span class="av" style="background:linear-gradient(140deg,#A78BFA,#5B8DEF)">Z</span><span class="nm">zerocool</span></div>
-            <div class="rost"><span class="av" style="background:linear-gradient(140deg,#34E39B,#0f9d6b)">R</span><span class="nm">rift_walker</span></div>
-            <div class="rost empty"><span class="av">+</span><span class="nm">120 more</span></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- podium (empty places before it's over) -->
-      <section class="sec" data-reveal>
-        <div class="sec__h"><h2>Podium</h2><span class="count mono">Decided when it ends</span></div>
-        <div class="podium">
-          <div class="pod p2">
-            <div class="rk">Runner-up</div>
-            <div class="av"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div>
-            <div class="nm">Awaiting result</div>
-            <div class="amt mono">248,000 <small style="color:var(--muted);font-weight:500">coins</small></div>
-          </div>
-          <div class="pod p1">
-            <div class="rk">Champion</div>
-            <div class="av"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M6 3h12v4a6 6 0 0 1-12 0V3ZM9 15v3h6v-3"/></svg></div>
-            <div class="nm">Awaiting result</div>
-            <div class="amt mono">496,000 <small style="color:var(--muted);font-weight:500">coins</small></div>
-          </div>
-          <div class="pod p3">
-            <div class="rk">Third</div>
-            <div class="av"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div>
-            <div class="nm">Awaiting result</div>
-            <div class="amt mono">148,800 <small style="color:var(--muted);font-weight:500">coins</small></div>
-          </div>
-        </div>
-      </section>
 
     </main>
   </div>

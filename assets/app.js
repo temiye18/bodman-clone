@@ -59,6 +59,13 @@
   $$("[data-filter='multi'] .pill").forEach(function(p){
     p.addEventListener("click", function(){ p.setAttribute("aria-pressed", p.getAttribute("aria-pressed")==="true"?"false":"true"); });
   });
+  // segmented controls (single-select)
+  $$("[data-seg]").forEach(function(seg){
+    $$("button", seg).forEach(function(b){ b.addEventListener("click", function(){
+      $$("button", seg).forEach(function(x){ x.setAttribute("aria-pressed","false"); });
+      b.setAttribute("aria-pressed","true");
+    }); });
+  });
 
   /* ---------- select menus (fixed-position, escape overflow) ---------- */
   var openMenu = null;
