@@ -111,6 +111,17 @@
   else { reveals.forEach(function(el){ el.classList.add("reveal"); });
     requestAnimationFrame(function(){ reveals.forEach(function(el,i){ setTimeout(function(){ el.classList.add("in"); }, Math.min(i*45,260)); }); }); }
 
+  /* ---------- prize breakdown ↔ distribution bar link ---------- */
+  $$(".pbreak").forEach(function(pb){
+    var sec = pb.closest("section"); if(!sec) return;
+    var bar = sec.querySelector(".distbar"); if(!bar) return;
+    var segs = $$("i", bar), rows = $$(".pbreak__row", pb);
+    rows.forEach(function(row, i){ row.addEventListener("mouseenter", function(){
+      segs.forEach(function(s, j){ s.style.opacity = (j===i)?"1":".25"; s.style.transform = (j===i)?"scaleY(1.55)":"scaleY(.8)"; });
+    }); });
+    pb.addEventListener("mouseleave", function(){ segs.forEach(function(s){ s.style.opacity=""; s.style.transform=""; }); });
+  });
+
   /* ---------- loading demo: buttons with data-loading show spinner briefly ---------- */
   $$("[data-demo-load]").forEach(function(b){ b.addEventListener("click", function(e){
     if(b.getAttribute("href")==="#") e.preventDefault();

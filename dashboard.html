@@ -69,26 +69,53 @@
 
     <main class="page">
 
+      <svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs>
+        <linearGradient id="sg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#FF3D1F" stop-opacity=".34"/>
+          <stop offset="1" stop-color="#FF3D1F" stop-opacity="0"/>
+        </linearGradient>
+      </defs></svg>
+
       <!-- greeting hero -->
       <section class="greet" data-reveal>
-        <div class="greet__top">
-          <span class="greet__ts mono">Season 04 · Arena open</span>
-        </div>
-        <h1>Welcome back, seyispecial18</h1>
-        <p>Two challenges are waiting on you, and one prize just cleared its hold.</p>
-        <div class="greet__row">
-          <div class="greet__bal">
-            <span class="k">Coin balance</span>
-            <span class="v mono"><span data-count="2680">0</span><b>Coins</b></span>
-            <span class="sub">£268.00 · 340 on hold</span>
+        <div class="greet__main">
+          <div class="greet__top">
+            <span class="greet__ts mono">Season 04 · Arena open</span>
           </div>
-          <div class="greet__cta">
-            <a class="btn btn--primary" href="#" data-demo-load>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>Buy coins</a>
-            <a class="btn btn--ghost" href="tournaments.html">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Find a competition</a>
+          <h1>Welcome back, seyispecial18</h1>
+          <p>Two challenges are waiting on you, and one prize just cleared its hold.</p>
+          <div class="greet__row">
+            <div class="greet__bal">
+              <span class="k">Coin balance</span>
+              <span class="v mono"><span data-count="2680">0</span><b>Coins</b></span>
+              <span class="sub">£268.00 · 340 on hold</span>
+            </div>
+            <div class="greet__cta">
+              <a class="btn btn--primary" href="#" data-demo-load>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>Buy coins</a>
+              <a class="btn btn--ghost" href="tournaments.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Find a competition</a>
+            </div>
           </div>
         </div>
+        <aside class="greet__aside">
+          <span class="lbl">Quick play</span>
+          <a class="qp" href="#">
+            <span class="qp__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h4l2-6 4 12 2-6h4"/></svg></span>
+            <span class="qp__t"><span class="nm">New challenge</span><span class="ds">Stake a 1v1</span></span>
+            <span class="qp__go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14m0 0-5-5m5 5-5 5"/></svg></span>
+          </a>
+          <a class="qp" href="#">
+            <span class="qp__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h12v4a6 6 0 0 1-12 0V3Z"/><path d="M9 15v3h6v-3M8 21h8"/></svg></span>
+            <span class="qp__t"><span class="nm">Host a tournament</span><span class="ds">Set your stakes</span></span>
+            <span class="qp__go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14m0 0-5-5m5 5-5 5"/></svg></span>
+          </a>
+          <a class="qp" href="#">
+            <span class="qp__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="3"/><path d="M7 12h3M8.5 10.5v3M15 11h.01M18 13h.01"/></svg></span>
+            <span class="qp__t"><span class="nm">Browse games</span><span class="ds">See what's live</span></span>
+            <span class="qp__go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14m0 0-5-5m5 5-5 5"/></svg></span>
+          </a>
+        </aside>
       </section>
 
       <!-- attention queue -->
@@ -139,14 +166,20 @@
             <article class="pool hoverable">
               <div class="pool__top"><span class="pool__game mono">Rocket Fury</span><span class="chip chip--live"><span class="livebars" aria-hidden="true"><i></i><i></i><i></i></span>Live</span></div>
               <h3>Overtime Invitational</h3>
-              <div class="pool__spark"><i style="height:40%"></i><i style="height:55%"></i><i style="height:48%"></i><i style="height:70%"></i><i style="height:62%"></i><i style="height:88%"></i><i style="height:100%"></i></div>
-              <div class="pool__nums"><span class="pool__pool mono">18,500<small>coins</small></span><span class="pool__meta">Round 3 · 8 left</span></div>
+              <svg class="spark" viewBox="0 0 100 34" preserveAspectRatio="none" aria-hidden="true">
+                <path class="spark__area" d="M0,23 L17,19 L33,21 L50,14 L67,17 L83,9 L100,6 L100,34 L0,34 Z"/>
+                <path class="spark__line" pathLength="1" d="M0,23 L17,19 L33,21 L50,14 L67,17 L83,9 L100,6"/>
+              </svg>
+              <div class="pool__nums"><span class="pool__pool mono"><span data-count="18500">0</span><small>coins</small></span><span class="pool__meta">Round 3 · 8 left</span></div>
             </article>
             <article class="pool hoverable">
               <div class="pool__top"><span class="pool__game mono">Neon Circuit</span><span class="chip chip--soon">Starts soon</span></div>
               <h3>Friday Night Sprint</h3>
-              <div class="pool__spark"><i style="height:30%"></i><i style="height:44%"></i><i style="height:38%"></i><i style="height:52%"></i><i style="height:60%"></i><i style="height:58%"></i><i style="height:72%"></i></div>
-              <div class="pool__nums"><span class="pool__pool mono">6,000<small>coins</small></span><span class="pool__meta">Locks in <span class="mono" data-countdown="00:26:15" data-expired="Locked">—</span></span></div>
+              <svg class="spark" viewBox="0 0 100 34" preserveAspectRatio="none" aria-hidden="true">
+                <path class="spark__area" d="M0,26 L17,22 L33,23 L50,19 L67,17 L83,18 L100,14 L100,34 L0,34 Z"/>
+                <path class="spark__line" pathLength="1" d="M0,26 L17,22 L33,23 L50,19 L67,17 L83,18 L100,14"/>
+              </svg>
+              <div class="pool__nums"><span class="pool__pool mono"><span data-count="6000">0</span><small>coins</small></span><span class="pool__meta">Locks in <span class="mono" data-countdown="00:26:15" data-expired="Locked">—</span></span></div>
             </article>
           </div>
         </div>
@@ -189,20 +222,29 @@
           <article class="pool hoverable">
             <div class="pool__top"><span class="pool__game mono">Rocket Fury</span><span class="chip chip--open">Open</span></div>
             <h3>Continental Clash</h3>
-            <div class="pool__spark"><i style="height:50%"></i><i style="height:62%"></i><i style="height:58%"></i><i style="height:74%"></i><i style="height:80%"></i><i style="height:92%"></i><i style="height:100%"></i></div>
-            <div class="pool__nums"><span class="pool__pool mono">1,240,000<small>coins</small></span><span class="pool__meta">128 / 256</span></div>
+            <svg class="spark" viewBox="0 0 100 34" preserveAspectRatio="none" aria-hidden="true">
+              <path class="spark__area" d="M0,20 L17,17 L33,18 L50,13 L67,12 L83,8 L100,6 L100,34 L0,34 Z"/>
+              <path class="spark__line" pathLength="1" d="M0,20 L17,17 L33,18 L50,13 L67,12 L83,8 L100,6"/>
+            </svg>
+            <div class="pool__nums"><span class="pool__pool mono"><span data-count="1240000">0</span><small>coins</small></span><span class="pool__meta">128 / 256</span></div>
           </article>
           <article class="pool hoverable">
             <div class="pool__top"><span class="pool__game mono">Neon Circuit</span><span class="chip chip--open">Open</span></div>
             <h3>Grand Prix Qualifier</h3>
-            <div class="pool__spark"><i style="height:44%"></i><i style="height:50%"></i><i style="height:66%"></i><i style="height:60%"></i><i style="height:78%"></i><i style="height:84%"></i><i style="height:90%"></i></div>
-            <div class="pool__nums"><span class="pool__pool mono">88,000<small>coins</small></span><span class="pool__meta">64 / 128</span></div>
+            <svg class="spark" viewBox="0 0 100 34" preserveAspectRatio="none" aria-hidden="true">
+              <path class="spark__area" d="M0,22 L17,20 L33,16 L50,17 L67,12 L83,11 L100,9 L100,34 L0,34 Z"/>
+              <path class="spark__line" pathLength="1" d="M0,22 L17,20 L33,16 L50,17 L67,12 L83,11 L100,9"/>
+            </svg>
+            <div class="pool__nums"><span class="pool__pool mono"><span data-count="88000">0</span><small>coins</small></span><span class="pool__meta">64 / 128</span></div>
           </article>
           <article class="pool hoverable">
             <div class="pool__top"><span class="pool__game mono">Iron Vanguard</span><span class="chip chip--open">Open</span></div>
             <h3>Vanguard Open Series</h3>
-            <div class="pool__spark"><i style="height:38%"></i><i style="height:52%"></i><i style="height:48%"></i><i style="height:64%"></i><i style="height:70%"></i><i style="height:76%"></i><i style="height:82%"></i></div>
-            <div class="pool__nums"><span class="pool__pool mono">45,000<small>coins</small></span><span class="pool__meta">30 / uncapped</span></div>
+            <svg class="spark" viewBox="0 0 100 34" preserveAspectRatio="none" aria-hidden="true">
+              <path class="spark__area" d="M0,23 L17,19 L33,21 L50,16 L67,14 L83,13 L100,11 L100,34 L0,34 Z"/>
+              <path class="spark__line" pathLength="1" d="M0,23 L17,19 L33,21 L50,16 L67,14 L83,13 L100,11"/>
+            </svg>
+            <div class="pool__nums"><span class="pool__pool mono"><span data-count="45000">0</span><small>coins</small></span><span class="pool__meta">30 / uncapped</span></div>
           </article>
         </div>
       </section>

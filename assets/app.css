@@ -145,8 +145,27 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opa
 
 /* ---------- dashboard: greeting hero ---------- */
 .greet{position:relative;overflow:hidden;padding:clamp(1.4rem,3vw,2.2rem);border:1px solid var(--line-2);
-  border-radius:var(--r-a) var(--r-b) var(--r-a) var(--r-b);background:linear-gradient(120deg,var(--panel) 40%,#170b09)}
+  border-radius:var(--r-a) var(--r-b) var(--r-a) var(--r-b);background:linear-gradient(120deg,var(--panel) 40%,#170b09);
+  display:grid;grid-template-columns:minmax(0,1fr) 258px;gap:clamp(1.4rem,3vw,2.6rem);align-items:center}
 .greet::before{content:"";position:absolute;right:-6%;top:-40%;width:44%;height:180%;pointer-events:none;background:radial-gradient(closest-side,rgba(255,61,31,.16),transparent 70%)}
+.greet__main{position:relative;z-index:1;min-width:0}
+/* quick-play aside — turns hero whitespace into a real shortcut */
+.greet__aside{position:relative;z-index:1;display:flex;flex-direction:column;gap:.5rem}
+.greet__aside .lbl{font-family:var(--f-hud);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.15rem}
+.qp{display:flex;align-items:center;gap:.75rem;padding:.7rem .8rem;border:1px solid var(--line-2);
+  border-radius:var(--r-b) 12px var(--r-b) 12px;background:rgba(14,14,19,.55);backdrop-filter:blur(3px);
+  transition:border-color .18s,background .18s,transform .18s}
+.qp:hover{border-color:rgba(255,61,31,.5);background:var(--panel-2);transform:translateX(3px)}
+.qp__ic{width:34px;height:34px;flex:none;border-radius:9px;display:grid;place-items:center;color:var(--coral);
+  background:var(--coral-ghost);border:1px solid rgba(255,61,31,.25)}
+.qp__ic svg{width:17px;height:17px}
+.qp__t{min-width:0}
+.qp__t .nm{display:block;font-family:var(--f-display);font-weight:700;font-size:.86rem;color:var(--bone);line-height:1.1}
+.qp__t .ds{display:block;font-family:var(--f-hud);font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:.15rem}
+.qp__go{margin-left:auto;color:var(--faint);transition:color .18s,transform .18s}
+.qp:hover .qp__go{color:var(--coral);transform:translateX(2px)}
+.qp__go svg{width:15px;height:15px;display:block}
+@media(max-width:900px){.greet{grid-template-columns:1fr}.greet__aside{max-width:420px}}
 .greet__top{display:flex;align-items:center;gap:.8rem;margin-bottom:1rem;flex-wrap:wrap}
 .greet__ts{font-family:var(--f-hud);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--coral)}
 .greet h1{font-size:clamp(1.6rem,3.6vw,2.3rem);font-weight:900;letter-spacing:-.02em;margin-bottom:.35rem}
@@ -194,8 +213,15 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opa
 .pool__top{display:flex;align-items:center;justify-content:space-between;gap:.6rem}
 .pool__game{font-family:var(--f-hud);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .pool h3{font-size:1.02rem;font-weight:800;letter-spacing:-.01em}
-.pool__spark{display:flex;align-items:flex-end;gap:2px;height:26px}
-.pool__spark i{flex:1;background:linear-gradient(var(--coral),var(--coral-deep));border-radius:1px;opacity:.65}
+/* elegant SVG area sparkline (draws itself in on first paint) */
+.spark{display:block;width:100%;height:38px;overflow:visible}
+.spark__area{fill:url(#sg);opacity:0;animation:sparkarea .7s .35s var(--ease) forwards}
+.spark__line{fill:none;stroke:var(--coral);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+  vector-effect:non-scaling-stroke;stroke-dasharray:1;stroke-dashoffset:1;animation:sparkdraw 1s .15s var(--ease) forwards}
+.pool:hover .spark__line{stroke:var(--coral-2)}
+@keyframes sparkdraw{to{stroke-dashoffset:0}}
+@keyframes sparkarea{to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.spark__area{opacity:1;animation:none}.spark__line{stroke-dashoffset:0;animation:none}}
 .pool__nums{display:flex;justify-content:space-between;align-items:baseline;gap:.6rem}
 .pool__pool{font-family:var(--f-hud);font-weight:700;font-variant-numeric:tabular-nums;font-size:1.35rem;color:var(--coral)}
 .pool__pool small{font-size:.55em;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-left:.25rem}
@@ -467,9 +493,38 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opa
 
 /* prize distribution bar */
 .distbar{display:flex;height:14px;border-radius:7px;overflow:hidden;gap:2px;margin-bottom:1.2rem}
-.distbar i{height:100%;border-radius:2px;background:var(--line-2);transition:flex .3s}
+.distbar i{height:100%;border-radius:2px;background:var(--line-2);transform-origin:center;transition:flex .3s,opacity .2s var(--ease),transform .2s var(--ease)}
 .distbar i.g1{background:var(--coral)}.distbar i.g2{background:var(--coral-2)}.distbar i.g3{background:var(--warm)}.distbar i.g4{background:var(--info)}
 .distbar i.rest{background:var(--panel-3)}
+
+/* =====================================================================
+   Detail polish + delight — meters that fill, a live pulse, row feedback
+   ===================================================================== */
+/* meters wipe in on first paint (settles to their real width) */
+@keyframes meterfill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.progress__fill{transform-origin:left;animation:meterfill .9s var(--ease) both}
+@keyframes distwipe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+.distbar{animation:distwipe 1s .1s var(--ease) both}
+/* the current schedule step quietly pulses so "now" reads as live */
+.tl.now .tl__node::after{content:"";position:absolute;inset:-2px;border-radius:50%;border:2px solid var(--coral);animation:tlpulse 2.4s var(--ease) infinite}
+@keyframes tlpulse{0%{transform:scale(1);opacity:.65}70%{transform:scale(2.6);opacity:0}100%{opacity:0}}
+/* row feedback across the dossier */
+.pbreak__row{transition:background .16s}
+.pbreak__row:hover{background:var(--panel-2)}
+.pbreak__row:hover .pbreak__rk{border-color:var(--line-2)}
+.pbreak__row:hover .pbreak__rk.g1{border-color:var(--coral)}
+.ledger__row{transition:background .16s}
+.ledger .ledger__row:hover{background:var(--panel-2)}
+.rost{transition:border-color .18s,background .18s,transform .18s}
+.rost:not(.more):hover{border-color:var(--line-2);background:var(--panel-3);transform:translateY(-2px)}
+/* champion podium gets a quiet coral crown + top accent */
+.pod.p1{position:relative;overflow:hidden}
+.pod.p1::after{content:"";position:absolute;inset:0 0 auto 0;height:2px;background:linear-gradient(90deg,transparent,var(--coral),transparent);opacity:.85}
+.pod.p1 .av{color:var(--coral);border-color:rgba(255,61,31,.45);border-style:solid}
+.pod{transition:border-color .2s,transform .2s}
+.pod:hover{border-color:var(--line-2);transform:translateY(-3px)}
+.pod.p1:hover{border-color:rgba(255,61,31,.6)}
+@media(prefers-reduced-motion:reduce){.tl.now .tl__node::after{display:none}}
 
 @media(max-width:1200px){.dpage{grid-template-columns:1fr}.stake{position:static}}
 @media(max-width:820px){.dossier{grid-template-columns:1fr}}
