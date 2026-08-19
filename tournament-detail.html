@@ -131,45 +131,33 @@
 
         <div class="dossier">
 
+         <!-- lane 1: when + who's backing it -->
+         <div class="dcol">
+
           <!-- schedule as a vertical timeline -->
           <section data-reveal>
             <div class="sec__h"><h2>Schedule</h2><span class="count mono">All times BST</span></div>
-            <ol class="timeline">
-              <li class="tl now">
-                <span class="tl__node"></span>
-                <span class="k">Registration closes</span>
-                <span class="v">Sat 23 Aug, 18:00</span>
-                <span class="foot">In <span class="mono" data-countdown="47:59:00" data-expired="Closed">—</span></span>
-              </li>
-              <li class="tl next">
-                <span class="tl__node"></span>
-                <span class="k">Tournament starts</span>
-                <span class="v">Sat 23 Aug, 19:00</span>
-                <span class="foot">Check-in opens 30 min prior</span>
-              </li>
-              <li class="tl next">
-                <span class="tl__node"></span>
-                <span class="k">Expected finish</span>
-                <span class="v">Sun 24 Aug, ~22:00</span>
-                <span class="foot">Prizes enter their 48-hour hold</span>
-              </li>
-            </ol>
-          </section>
-
-          <!-- prize breakdown with distribution bar -->
-          <section data-reveal>
-            <div class="sec__h"><h2>Prize breakdown</h2><span class="count mono">Top 8 paid</span></div>
-            <div class="distbar" role="img" aria-label="Pot split: 1st 40%, 2nd 20%, 3rd 12%, 4th 8%, 5th to 8th 20%">
-              <i class="g1" style="flex:40"></i><i class="g2" style="flex:20"></i><i class="g3" style="flex:12"></i><i class="g4" style="flex:8"></i><i class="rest" style="flex:20"></i>
-            </div>
             <div class="panel panel--pad">
-              <div class="pbreak">
-                <div class="pbreak__row"><span class="pbreak__rk g1">1</span><span class="pbreak__amt mono">496,000 <small>coins</small></span><span class="pbreak__pct mono">40%</span></div>
-                <div class="pbreak__row"><span class="pbreak__rk g2">2</span><span class="pbreak__amt mono">248,000 <small>coins</small></span><span class="pbreak__pct mono">20%</span></div>
-                <div class="pbreak__row"><span class="pbreak__rk g3">3</span><span class="pbreak__amt mono">148,800 <small>coins</small></span><span class="pbreak__pct mono">12%</span></div>
-                <div class="pbreak__row"><span class="pbreak__rk g4">4</span><span class="pbreak__amt mono">99,200 <small>coins</small></span><span class="pbreak__pct mono">8%</span></div>
-                <div class="pbreak__row"><span class="pbreak__rk">5–8</span><span class="pbreak__amt mono">62,000 <small>coins each</small></span><span class="pbreak__pct mono">5% each</span></div>
-              </div>
+              <ol class="timeline">
+                <li class="tl now">
+                  <span class="tl__node"></span>
+                  <span class="k">Registration closes</span>
+                  <span class="v">Sat 23 Aug, 18:00</span>
+                  <span class="foot">In <span class="mono" data-countdown="47:59:00" data-expired="Closed">—</span></span>
+                </li>
+                <li class="tl next">
+                  <span class="tl__node"></span>
+                  <span class="k">Tournament starts</span>
+                  <span class="v">Sat 23 Aug, 19:00</span>
+                  <span class="foot">Check-in opens 30 min prior</span>
+                </li>
+                <li class="tl next">
+                  <span class="tl__node"></span>
+                  <span class="k">Expected finish</span>
+                  <span class="v">Sun 24 Aug, ~22:00</span>
+                  <span class="foot">Prizes enter their 48-hour hold</span>
+                </li>
+              </ol>
             </div>
           </section>
 
@@ -197,6 +185,28 @@
             </div>
           </section>
 
+         </div>
+
+         <!-- lane 2: what's at stake + who's in -->
+         <div class="dcol">
+
+          <!-- prize breakdown with distribution bar -->
+          <section data-reveal>
+            <div class="sec__h"><h2>Prize breakdown</h2><span class="count mono">Top 8 paid</span></div>
+            <div class="panel panel--pad">
+              <div class="distbar" role="img" aria-label="Pot split: 1st 40%, 2nd 20%, 3rd 12%, 4th 8%, 5th to 8th 20%">
+                <i class="g1" style="flex:40"></i><i class="g2" style="flex:20"></i><i class="g3" style="flex:12"></i><i class="g4" style="flex:8"></i><i class="rest" style="flex:20"></i>
+              </div>
+              <div class="pbreak">
+                <div class="pbreak__row"><span class="pbreak__rk g1">1</span><span class="pbreak__amt mono">496,000 <small>coins</small></span><span class="pbreak__pct mono">40%</span></div>
+                <div class="pbreak__row"><span class="pbreak__rk g2">2</span><span class="pbreak__amt mono">248,000 <small>coins</small></span><span class="pbreak__pct mono">20%</span></div>
+                <div class="pbreak__row"><span class="pbreak__rk g3">3</span><span class="pbreak__amt mono">148,800 <small>coins</small></span><span class="pbreak__pct mono">12%</span></div>
+                <div class="pbreak__row"><span class="pbreak__rk g4">4</span><span class="pbreak__amt mono">99,200 <small>coins</small></span><span class="pbreak__pct mono">8%</span></div>
+                <div class="pbreak__row"><span class="pbreak__rk">5–8</span><span class="pbreak__amt mono">62,000 <small>coins each</small></span><span class="pbreak__pct mono">5% each</span></div>
+              </div>
+            </div>
+          </section>
+
           <!-- roster -->
           <section data-reveal>
             <div class="sec__h"><h2>Roster</h2><span class="count mono">128 entered · 256 seats</span></div>
@@ -214,8 +224,10 @@
             </div>
           </section>
 
+         </div>
+
           <!-- podium (empty places before it's over) -->
-          <section data-reveal>
+          <section class="span2" data-reveal>
             <div class="sec__h"><h2>Podium</h2><span class="count mono">Decided when it ends</span></div>
             <div class="podium">
               <div class="pod p2">

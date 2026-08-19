@@ -127,130 +127,145 @@
         </div>
       </div>
 
-      <!-- stake-docket cards -->
-      <div class="dockets" data-reveal>
+      <!-- stake-ticket cards -->
+      <div class="tkts" data-reveal>
 
         <!-- free entry, uncapped -->
-        <article class="docket">
-          <div class="docket__art">
+        <article class="tkt">
+          <div class="tkt__art">
             <div class="tcard__fill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 3h12v4a6 6 0 0 1-12 0V3Z"/><path d="M9 15v3h6v-3M8 21h8M4 5h2M18 5h2"/></svg></div>
-            <img class="docket__img" src="images/cover-iron-vanguard.png" alt="" onerror="this.remove()">
-            <span class="docket__state"><span class="chip chip--open">Open</span></span>
-            <span class="docket__genre mono">Iron Vanguard</span>
-          </div>
-          <div class="docket__body">
-            <div>
+            <img src="images/cover-iron-vanguard.png" alt="" onerror="this.remove()">
+            <span class="tkt__state"><span class="chip chip--open">Open</span></span>
+            <span class="tkt__bracket"></span>
+            <div class="tkt__over">
+              <span class="tkt__genre">Iron Vanguard</span>
               <h3>Vanguard Open Series</h3>
-              <div class="docket__host">Boadman · <b>Community</b></div>
-            </div>
-            <div class="docket__pool"><span class="k">Pool</span><span class="v mono">45,000 <small>coins</small></span></div>
-            <div class="docket__seats">
-              <div class="row"><span>Guaranteed <b>45,000</b></span><span><b>30</b> in · uncapped</span></div>
+              <span class="tkt__host">Boadman · <b>Community</b></span>
             </div>
           </div>
-          <div class="docket__stub">
-            <span class="k">Entry</span>
-            <span class="price free">Free</span>
+          <div class="tkt__data">
+            <div class="tkt__pool">
+              <div><span class="k">Prize pool</span><span class="v"><span class="mono" data-count="45000">0</span><small>coins</small></span></div>
+              <div class="gtd">Guaranteed<b class="mono">45,000</b></div>
+            </div>
+            <div class="tkt__seats">
+              <div class="row"><span><b>30</b> entered</span><span class="open">Uncapped</span></div>
+            </div>
+          </div>
+          <div class="tkt__stub">
+            <div><span class="k">Entry</span><span class="price free">Free</span></div>
             <a class="btn btn--primary" href="tournament-detail.html">Join</a>
           </div>
         </article>
 
         <!-- live -->
-        <article class="docket">
-          <div class="docket__art">
-            <img class="docket__img" src="images/cover-neon-circuit.png" alt="" onerror="this.onerror=null;this.src='images/tournament-racing.png'">
-            <span class="docket__state"><span class="chip chip--live"><span class="livebars" aria-hidden="true"><i></i><i></i><i></i></span>Live</span></span>
-            <span class="docket__genre mono">Neon Circuit</span>
-          </div>
-          <div class="docket__body">
-            <div>
+        <article class="tkt">
+          <div class="tkt__art">
+            <img src="images/cover-neon-circuit.png" alt="" onerror="this.onerror=null;this.src='images/tournament-racing.png'">
+            <span class="tkt__state"><span class="chip chip--live"><span class="livebars" aria-hidden="true"><i></i><i></i><i></i></span>Live</span></span>
+            <span class="tkt__bracket"></span>
+            <div class="tkt__over">
+              <span class="tkt__genre">Neon Circuit</span>
               <h3>Grand Prix Qualifier</h3>
-              <div class="docket__host">Player-hosted · <b>apexghost</b></div>
+              <span class="tkt__host">Player-hosted · <b>apexghost</b></span>
             </div>
-            <div class="docket__pool"><span class="k">Pool</span><span class="v mono">88,000 <small>coins</small></span></div>
-            <div class="docket__seats">
-              <div class="row"><span>Guaranteed <b>50,000</b></span><span><b>64</b> / 128 in</span></div>
+          </div>
+          <div class="tkt__data">
+            <div class="tkt__pool">
+              <div><span class="k">Prize pool</span><span class="v"><span class="mono" data-count="88000">0</span><small>coins</small></span></div>
+              <div class="gtd">Guaranteed<b class="mono">50,000</b></div>
+            </div>
+            <div class="tkt__seats">
+              <div class="row"><span><b>64</b> / 128 entered</span><span>50%</span></div>
               <div class="progress"><div class="progress__fill" style="width:50%"></div></div>
             </div>
           </div>
-          <div class="docket__stub">
-            <span class="k">Entry</span>
-            <span class="price mono">750</span>
+          <div class="tkt__stub">
+            <div><span class="k">Entry</span><span class="price mono">750</span></div>
             <a class="btn btn--ghost" href="tournament-detail.html">Spectate</a>
           </div>
         </article>
 
         <!-- starting soon, full -->
-        <article class="docket">
-          <div class="docket__art">
-            <img class="docket__img" src="images/cover-shadow-protocol.png" alt="" onerror="this.onerror=null;this.src='images/tournament-shooter.png'">
-            <span class="docket__state"><span class="chip chip--soon">Starting soon</span></span>
-            <span class="docket__genre mono">Shadow Protocol</span>
-          </div>
-          <div class="docket__body">
-            <div>
+        <article class="tkt">
+          <div class="tkt__art">
+            <img src="images/cover-shadow-protocol.png" alt="" onerror="this.onerror=null;this.src='images/tournament-shooter.png'">
+            <span class="tkt__state"><span class="chip chip--soon">Starting soon</span></span>
+            <span class="tkt__bracket"></span>
+            <div class="tkt__over">
+              <span class="tkt__genre">Shadow Protocol</span>
               <h3>Blackout Championship</h3>
-              <div class="docket__host">Brand-hosted · <b>Nightfall Studios</b></div>
+              <span class="tkt__host">Brand-hosted · <b>Nightfall Studios</b></span>
             </div>
-            <div class="docket__pool"><span class="k">Pool</span><span class="v mono">210,000 <small>coins</small></span></div>
-            <div class="docket__seats">
-              <div class="row"><span>Guaranteed <b>200,000</b></span><span><b>96</b> / 96 in</span></div>
+          </div>
+          <div class="tkt__data">
+            <div class="tkt__pool">
+              <div><span class="k">Prize pool</span><span class="v"><span class="mono" data-count="210000">0</span><small>coins</small></span></div>
+              <div class="gtd">Guaranteed<b class="mono">200,000</b></div>
+            </div>
+            <div class="tkt__seats">
+              <div class="row"><span><b>96</b> / 96 entered</span><span class="soon">Full</span></div>
               <div class="progress progress--full"><div class="progress__fill" style="width:100%"></div></div>
             </div>
           </div>
-          <div class="docket__stub">
-            <span class="k">Entry</span>
-            <span class="price mono">1,000</span>
+          <div class="tkt__stub">
+            <div><span class="k">Entry</span><span class="price mono">1,000</span></div>
             <a class="btn btn--soft" href="tournament-detail.html" aria-disabled="true" style="pointer-events:none">Full</a>
           </div>
         </article>
 
         <!-- small player-hosted, no art -->
-        <article class="docket">
-          <div class="docket__art">
+        <article class="tkt">
+          <div class="tkt__art">
             <div class="tcard__fill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 3h12v4a6 6 0 0 1-12 0V3Z"/><path d="M9 15v3h6v-3M8 21h8M4 5h2M18 5h2"/></svg></div>
-            <span class="docket__state"><span class="chip chip--open">Open</span></span>
-            <span class="docket__genre mono">Rocket Fury</span>
-          </div>
-          <div class="docket__body">
-            <div>
+            <span class="tkt__state"><span class="chip chip--open">Open</span></span>
+            <span class="tkt__bracket"></span>
+            <div class="tkt__over">
+              <span class="tkt__genre">Rocket Fury</span>
               <h3>Sunday Rumble</h3>
-              <div class="docket__host">Player-hosted · <b>midnight_owl</b></div>
+              <span class="tkt__host">Player-hosted · <b>midnight_owl</b></span>
             </div>
-            <div class="docket__pool"><span class="k">Pool</span><span class="v mono">3,200 <small>coins</small></span></div>
-            <div class="docket__seats">
-              <div class="row"><span>Guaranteed <b>2,000</b></span><span><b>12</b> / 32 in</span></div>
+          </div>
+          <div class="tkt__data">
+            <div class="tkt__pool">
+              <div><span class="k">Prize pool</span><span class="v"><span class="mono" data-count="3200">0</span><small>coins</small></span></div>
+              <div class="gtd">Guaranteed<b class="mono">2,000</b></div>
+            </div>
+            <div class="tkt__seats">
+              <div class="row"><span><b>12</b> / 32 entered</span><span>38%</span></div>
               <div class="progress"><div class="progress__fill" style="width:38%"></div></div>
             </div>
           </div>
-          <div class="docket__stub">
-            <span class="k">Entry</span>
-            <span class="price mono">200</span>
+          <div class="tkt__stub">
+            <div><span class="k">Entry</span><span class="price mono">200</span></div>
             <a class="btn btn--primary" href="tournament-detail.html">Join</a>
           </div>
         </article>
 
         <!-- open, own -->
-        <article class="docket">
-          <div class="docket__art">
-            <img class="docket__img" src="images/cover-neon-circuit.png" alt="" onerror="this.onerror=null;this.src='images/tournament-racing.png'">
-            <span class="docket__state"><span class="chip chip--open">Open</span></span>
-            <span class="docket__genre mono">Neon Circuit</span>
-          </div>
-          <div class="docket__body">
-            <div>
+        <article class="tkt">
+          <div class="tkt__art">
+            <img src="images/cover-neon-circuit.png" alt="" onerror="this.onerror=null;this.src='images/tournament-racing.png'">
+            <span class="tkt__state"><span class="chip chip--open">Open</span></span>
+            <span class="tkt__bracket"></span>
+            <div class="tkt__over">
+              <span class="tkt__genre">Neon Circuit</span>
               <h3>Friday Night Sprint</h3>
-              <div class="docket__host">Hosted by <b>you</b></div>
+              <span class="tkt__host">Hosted by <b>you</b></span>
             </div>
-            <div class="docket__pool"><span class="k">Pool</span><span class="v mono">6,000 <small>coins</small></span></div>
-            <div class="docket__seats">
-              <div class="row"><span>Guaranteed <b>5,000</b></span><span><b>18</b> / 64 in</span></div>
+          </div>
+          <div class="tkt__data">
+            <div class="tkt__pool">
+              <div><span class="k">Prize pool</span><span class="v"><span class="mono" data-count="6000">0</span><small>coins</small></span></div>
+              <div class="gtd">Guaranteed<b class="mono">5,000</b></div>
+            </div>
+            <div class="tkt__seats">
+              <div class="row"><span><b>18</b> / 64 entered</span><span>28%</span></div>
               <div class="progress"><div class="progress__fill" style="width:28%"></div></div>
             </div>
           </div>
-          <div class="docket__stub">
-            <span class="k">Entry</span>
-            <span class="price mono">300</span>
+          <div class="tkt__stub">
+            <div><span class="k">Entry</span><span class="price mono">300</span></div>
             <a class="btn btn--ghost" href="tournament-detail.html">Manage</a>
           </div>
         </article>

@@ -363,47 +363,62 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opa
 .ops__seg button[aria-pressed="true"]{color:#fff;background:linear-gradient(120deg,var(--coral),var(--coral-deep))}
 .ops__games{display:flex;gap:.4rem;flex-wrap:wrap}
 .ops__games .pill{font-size:.68rem;padding:.42rem .8rem}
-.ops__right{margin-left:auto;display:flex;gap:.55rem;align-items:center}
+.ops__right{margin-left:auto;display:flex;gap:.55rem;align-items:center;flex-wrap:wrap;row-gap:.6rem}
 .ops__count{font-family:var(--f-hud);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
 
-/* stake-docket cards */
-.dockets{display:grid;grid-template-columns:repeat(auto-fill,minmax(430px,1fr));gap:1.1rem}
-.docket{position:relative;display:grid;grid-template-columns:minmax(150px,33%) 1fr 148px;background:var(--panel);
-  border:1px solid var(--line);border-radius:var(--r-a) var(--r-b) var(--r-a) var(--r-b);overflow:hidden;
-  transition:border-color .2s,transform .2s,box-shadow .2s}
-.docket:hover{border-color:var(--line-2);transform:translateY(-3px);box-shadow:0 20px 44px -28px rgba(0,0,0,.7)}
-.docket__art{position:relative;overflow:hidden;min-height:170px;background:var(--panel-2)}
-.docket__art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
-.docket:hover .docket__art img{transform:scale(1.06)}
-.docket__art .tcard__fill{position:absolute;inset:0}
-.docket__art::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 55%,rgba(8,8,10,.5))}
-.docket__state{position:absolute;top:.6rem;left:.6rem;z-index:2}
-.docket__genre{position:absolute;bottom:.55rem;left:.65rem;z-index:2;font-family:var(--f-hud);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--bone);opacity:.92}
-.docket__body{padding:1.05rem 1.15rem;display:flex;flex-direction:column;gap:.7rem;justify-content:center;min-width:0}
-.docket__body h3{font-size:1.18rem;font-weight:800;letter-spacing:-.01em;line-height:1.08}
-.docket__host{font-family:var(--f-hud);font-size:.64rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
-.docket__host b{color:var(--text);font-weight:600}
-.docket__seats{margin-top:.15rem}
-.docket__seats .row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.35rem;font-family:var(--f-hud);font-size:.66rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);font-variant-numeric:tabular-nums}
-.docket__seats .row b{color:var(--bone);font-weight:700}
-.docket__pool{display:flex;align-items:baseline;gap:.5rem;margin-top:.1rem}
-.docket__pool .k{font-family:var(--f-hud);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
-.docket__pool .v{font-family:var(--f-hud);font-weight:700;font-variant-numeric:tabular-nums;font-size:1.05rem;color:var(--coral)}
-.docket__pool .v small{color:var(--muted);font-weight:500;font-size:.7em;letter-spacing:.06em}
-/* the tear-off stub */
-.docket__stub{position:relative;padding:1rem .9rem;display:flex;flex-direction:column;gap:.55rem;justify-content:center;text-align:center;
-  background:var(--panel-2);border-left:1px dashed var(--line-2)}
-.docket__stub::before,.docket__stub::after{content:"";position:absolute;left:-7px;width:13px;height:13px;border-radius:50%;background:var(--ink);border:1px solid var(--line)}
-.docket__stub::before{top:-7px}.docket__stub::after{bottom:-7px}
-.docket__stub .k{font-family:var(--f-hud);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.docket__stub .price{font-family:var(--f-hud);font-weight:700;font-variant-numeric:tabular-nums;font-size:1.15rem;color:var(--bone);line-height:1}
-.docket__stub .price.free{color:var(--ok)}
-.docket__stub .btn{width:100%;padding:.5rem .5rem;font-size:.64rem}
+/* premium tournament "stake ticket" cards — cinematic poster + tear-off stub */
+.tkts{display:grid;grid-template-columns:repeat(auto-fill,minmax(288px,1fr));gap:1.2rem}
+.tkt{position:relative;display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);isolation:isolate;
+  border-radius:var(--r-a) var(--r-b) var(--r-a) var(--r-b);
+  transition:transform .28s var(--ease),border-color .28s var(--ease),box-shadow .28s var(--ease)}
+.tkt:hover{transform:translateY(-6px);border-color:rgba(255,61,31,.4);
+  box-shadow:0 28px 58px -30px rgba(0,0,0,.9),0 10px 34px -20px rgba(255,61,31,.28)}
+/* poster art with title set over it */
+.tkt__art{position:relative;aspect-ratio:16/10;overflow:hidden;border-radius:var(--r-a) var(--r-b) 0 0}
+.tkt__art img{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.tkt:hover .tkt__art img{transform:scale(1.07)}
+.tkt__art .tcard__fill{position:absolute;inset:0;z-index:0}
+.tkt__art::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(0deg,var(--panel) 1%,rgba(8,8,10,.82) 26%,rgba(8,8,10,.12) 58%,rgba(8,8,10,.35))}
+/* hover sheen sweep */
+.tkt__art::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(115deg,transparent 34%,rgba(255,255,255,.16) 46%,transparent 58%);
+  transform:translateX(-130%);transition:transform .85s var(--ease)}
+.tkt:hover .tkt__art::before{transform:translateX(130%)}
+.tkt__state{position:absolute;top:.75rem;left:.75rem;z-index:4}
+.tkt__bracket{position:absolute;top:.7rem;right:.7rem;width:15px;height:15px;z-index:4;pointer-events:none;
+  border-top:1.5px solid var(--coral);border-right:1.5px solid var(--coral);opacity:0;transform:translate(-5px,5px);transition:opacity .28s,transform .28s}
+.tkt:hover .tkt__bracket{opacity:.75;transform:none}
+.tkt__over{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:.9rem 1rem .85rem}
+.tkt__genre{display:block;font-family:var(--f-hud);font-size:.57rem;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);margin-bottom:.35rem}
+.tkt__over h3{font-size:1.24rem;font-weight:800;letter-spacing:-.015em;line-height:1.04;color:var(--bone);text-wrap:balance;text-shadow:0 2px 12px rgba(0,0,0,.55)}
+.tkt__host{display:block;font-family:var(--f-hud);font-size:.6rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-top:.4rem}
+.tkt__host b{color:var(--text);font-weight:600}
+/* data zone */
+.tkt__data{padding:.95rem 1rem 1rem;display:flex;flex-direction:column;gap:.85rem}
+.tkt__pool{display:flex;align-items:flex-end;justify-content:space-between;gap:.7rem}
+.tkt__pool .k{display:block;font-family:var(--f-hud);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.2rem}
+.tkt__pool .v{font-family:var(--f-hud);font-weight:700;font-variant-numeric:tabular-nums;font-size:1.55rem;color:var(--coral);line-height:.92;letter-spacing:-.01em}
+.tkt__pool .v small{font-size:.4em;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-left:.3rem}
+.tkt__pool .gtd{text-align:right;font-family:var(--f-hud);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
+.tkt__pool .gtd b{display:block;color:var(--text);font-weight:700;font-variant-numeric:tabular-nums;font-size:.92rem;letter-spacing:0;margin-top:.15rem}
+.tkt__seats .row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.4rem;font-family:var(--f-hud);font-size:.66rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);font-variant-numeric:tabular-nums}
+.tkt__seats .row b{color:var(--bone);font-weight:700}
+.tkt__seats .row .open{color:var(--ok)}.tkt__seats .row .soon{color:var(--soon)}
+/* tear-off ticket stub footer */
+.tkt__stub{position:relative;margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:.7rem;
+  padding:.85rem 1rem;background:var(--panel-2);border-top:1px dashed var(--line-2);border-radius:0 0 var(--r-a) var(--r-b)}
+.tkt__stub::before,.tkt__stub::after{content:"";position:absolute;top:-7px;width:13px;height:13px;border-radius:50%;background:var(--ink);border:1px solid var(--line)}
+.tkt__stub::before{left:-7px}.tkt__stub::after{right:-7px}
+.tkt__stub .k{display:block;font-family:var(--f-hud);font-size:.54rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.14rem}
+.tkt__stub .price{font-family:var(--f-hud);font-weight:700;font-variant-numeric:tabular-nums;font-size:1.12rem;color:var(--bone);line-height:1}
+.tkt__stub .price.free{color:var(--ok)}
+.tkt__stub .btn{flex:none;padding:.58rem 1rem;font-size:.66rem}
 
 /* =====================================================================
    Tournament detail "Command dossier" — sticky stake console + timeline
    ===================================================================== */
-.dpage{display:grid;grid-template-columns:360px 1fr;gap:1.4rem;align-items:start;margin-top:1.3rem}
+.dpage{display:grid;grid-template-columns:344px 1fr;gap:1.4rem;align-items:start;margin-top:1.3rem}
 /* sticky stake console */
 .stake{position:sticky;top:calc(var(--head-h) + 1rem);display:flex;flex-direction:column;gap:1.15rem;
   background:linear-gradient(160deg,var(--panel),var(--ink-2));border:1px solid var(--line-2);
@@ -429,7 +444,12 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opa
 .stake__cta .btn{width:100%}
 .stake__fine{font-family:var(--f-hud);font-size:.6rem;letter-spacing:.04em;color:var(--faint);text-align:center;line-height:1.5}
 
-.dossier{min-width:0;display:flex;flex-direction:column;gap:clamp(1.5rem,3vw,2.2rem)}
+/* dossier as a 2-lane packed bento: denser panels, no towering single column,
+   lanes pack independently so nothing strands beside a taller neighbour */
+.dossier{min-width:0;display:grid;grid-template-columns:1fr 1fr;gap:1.3rem;align-items:start}
+.dossier>*{min-width:0}
+.dcol{display:flex;flex-direction:column;gap:1.3rem;min-width:0}
+.dossier .span2{grid-column:1 / -1}
 
 /* vertical schedule timeline */
 .timeline{position:relative;list-style:none;padding-left:.2rem}
@@ -451,15 +471,9 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opa
 .distbar i.g1{background:var(--coral)}.distbar i.g2{background:var(--coral-2)}.distbar i.g3{background:var(--warm)}.distbar i.g4{background:var(--info)}
 .distbar i.rest{background:var(--panel-3)}
 
-@media(max-width:1080px){.dpage{grid-template-columns:1fr}.stake{position:static}}
-@media(max-width:640px){
-  .dockets{grid-template-columns:1fr}
-  .docket{grid-template-columns:1fr}
-  .docket__art{aspect-ratio:16/9;min-height:0}
-  .docket__stub{border-left:0;border-top:1px dashed var(--line-2);flex-direction:row;justify-content:space-between;align-items:center;text-align:left}
-  .docket__stub::before{top:auto;bottom:-7px;left:-7px}.docket__stub::after{top:-7px;bottom:auto;left:auto;right:-7px}
-  .docket__stub .btn{width:auto}
-}
+@media(max-width:1200px){.dpage{grid-template-columns:1fr}.stake{position:static}}
+@media(max-width:820px){.dossier{grid-template-columns:1fr}}
+@media(max-width:420px){.tkts{grid-template-columns:1fr}}
 
 /* ---------- empty states + skeleton ---------- */
 .empty{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.7rem;padding:clamp(2rem,5vw,3.4rem) 1.5rem;border:1px dashed var(--line-2);border-radius:var(--r-a) var(--r-b) var(--r-a) var(--r-b);background:var(--panel)}

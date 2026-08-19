@@ -28,10 +28,16 @@
       el.textContent = pre+fmt(tg*e)+suf; if(p<1) requestAnimationFrame(step); else el.textContent = pre+fmt(tg)+suf; }
     requestAnimationFrame(step);
   }
-  // run when visible (once)
+  // Off-screen figures are prefilled with their real value immediately (never a stuck "0"
+  // where money belongs), then still count up when scrolled into view for the effect.
+  function setFinal(el){ var tg=parseFloat(el.getAttribute("data-count")); if(!isNaN(tg)) el.textContent=(el.getAttribute("data-prefix")||"")+fmt(tg)+(el.getAttribute("data-suffix")||""); }
   if("IntersectionObserver" in window){
-    var io = new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ countUp(en.target); io.unobserve(en.target); } }); },{threshold:.4});
-    $$("[data-count]").forEach(function(el){ io.observe(el); });
+    var io = new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ countUp(en.target); io.unobserve(en.target); } }); },{threshold:.35});
+    $$("[data-count]").forEach(function(el){
+      var r = el.getBoundingClientRect();
+      if(r.top >= innerHeight || r.bottom <= 0) setFinal(el);   // below/above fold: show real value now
+      io.observe(el);                                            // and animate when it enters view
+    });
   } else { $$("[data-count]").forEach(countUp); }
 
   /* ---------- live countdowns (designed expired state) ---------- */
